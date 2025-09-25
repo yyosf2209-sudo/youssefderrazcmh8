@@ -1,3 +1,8 @@
+I have added a new button named **"Apply From Name"** for the Custom From Name field. This button now independently applies the new name to the header without needing to press the main "Apply" button. I have also added a status indicator to show when the name has been successfully applied.
+
+Here is the updated code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +56,7 @@
     .btn:hover{ transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,.2) }
     .import-btn{ background:var(--brand) } .clean-btn{ background:var(--ok) } .export-btn{ background:var(--warn) }
     .clear-btn{ background:var(--info) } .deselect-btn{ background:var(--danger) } .apply-btn{ background:var(--primary) }
-    .insert-btn{ background:#ff5722 } .subject-btn{ background:#9c27b0 }
+    .insert-btn{ background:#ff5722 } .subject-btn{ background:#9c27b0 } .custom-name-btn{ background: #ff9800 }
     .encode-btn{ background:#2196f3 } .decode-btn{ background:#4caf50 }
     .copy-btn { background: #2ecc71; color: white; }
     .copy-btn:hover { background: #27ae60; transform: translateY(-2px); }
@@ -655,6 +660,8 @@ To: recipient@example.com
             <div class="options">
               <label>Custom From Name:</label>
               <input type="text" id="customName" placeholder="FROM NAME (leave empty to keep original)" value="" />
+              <button class="btn custom-name-btn" id="applyCustomNameBtn">Apply From Name</button>
+              <div id="fromNameStatus" class="action-status">Already applied</div>
               <div style="margin:6px 0 10px">
                 <label><input type="checkbox" id="toggleRdns"/> Replace domain with [RDNS]</label>
                 <div id="rdnsStatus" class="action-status">Already applied</div>
@@ -861,6 +868,8 @@ To: recipient@example.com
     const headStatus = document.getElementById('headStatus');
     const subjectStatus = document.getElementById('subjectStatus');
     const insertStatus = document.getElementById('insertStatus');
+    const applyCustomNameBtn = document.getElementById('applyCustomNameBtn');
+    const fromNameStatus = document.getElementById('fromNameStatus');
     
     // Encoder/Decoder refs
     const encodeInput = document.getElementById('encodeInput');
@@ -885,7 +894,7 @@ To: recipient@example.com
     // Track which actions have been applied
     let actionsApplied = {
       rdns: false, rpath: false, eid: false, ip: false, head: false,
-      subject: false, insert: false
+      subject: false, insert: false, fromName: false
     };
 
     // Track original content to detect changes
@@ -909,10 +918,10 @@ To: recipient@example.com
     });
 
     // History functionality
-    function addToHistory(type, content, filename = null, subject = null) {
+    function addToHistory(type, content, filename = null, subject = null, fromName = null) {
       const timestamp = new Date().toLocaleString();
       const historyItem = {
-        id: Date.now(), type, content, filename, subject, timestamp
+        id: Date.now(), type, content, filename, subject, fromName, timestamp
       };
       
       history.unshift(historyItem);
@@ -960,6 +969,10 @@ To: recipient@example.com
             title = 'Subject Changed';
             contentPreview = `New subject: ${item.subject}`;
             break;
+          case 'fromName':
+            title = 'From Name Changed';
+            contentPreview = `New name: ${item.fromName}`;
+            break;
           default:
             title = 'Activity';
         }
@@ -975,6 +988,8 @@ To: recipient@example.com
             exportFilenameInput.value = item.filename;
           } else if (item.type === 'subject') {
             customSubjectInput.value = item.subject;
+          } else if (item.type === 'fromName') {
+            customNameInput.value = item.fromName;
           }
           historyPanel.classList.remove('active');
         });
@@ -1052,7 +1067,7 @@ To: recipient@example.com
     function resetAllActions() {
       actionsApplied = {
         rdns: false, rpath: false, eid: false, ip: false, head: false,
-        subject: false, insert: false
+        subject: false, insert: false, fromName: false
       };
       const statusElements = document.querySelectorAll('.action-status');
       statusElements.forEach(el => el.style.display = 'none');
@@ -1122,28 +1137,17 @@ To: recipient@example.com
     function applyTransformations() {
       let text = outputArea.value || inputArea.value;
       if (!text.trim()) { alert("Paste, import, or clean a header first."); return; }
-      const custom = customNameInput.value.trim();
       let changed = false;
 
       if (document.getElementById("toggleRdns").checked && !actionsApplied.rdns) {
         text = text.replace(/^From:\s*(.*?)\s*<([^@>]+)@([^>]+)>/gmi, (match, displayName, username, domain) => {
-          const newDisp = custom ? custom : displayName.trim();
-          return `From: ${newDisp} <${username}@[RDNS]>`;
-        });
-        text = text.replace(/^From:\s*([^@\s]+)@([^\s>]+)/gmi, (match, username, domain) => {
-          const newDisp = custom ? custom + ' ' : '';
-          return `From: ${newDisp}<${username}@[P_RPATH]>`;
+          return `From: ${displayName.trim()} <${username}@[RDNS]>`;
         });
         actionsApplied.rdns = true; rdnsStatus.style.display = 'block'; changed = true;
       }
       if (document.getElementById("toggleRpath").checked && !actionsApplied.rpath) {
         text = text.replace(/^From:\s*(.*?)\s*<([^@>]+)@([^>]+)>/gmi, (match, displayName, username, domain) => {
-          const newDisp = custom ? custom : displayName.trim();
-          return `From: ${newDisp} <${username}@[P_RPATH]>`;
-        });
-        text = text.replace(/^From:\s*([^@\s]+)@([^\s>]+)/gmi, (match, username, domain) => {
-          const newDisp = custom ? custom + ' ' : '';
-          return `From: ${newDisp}<${username}@[P_RPATH]>`;
+          return `From: ${displayName.trim()} <${username}@[P_RPATH]>`;
         });
         actionsApplied.rpath = true; rpathStatus.style.display = 'block'; changed = true;
       }
@@ -1172,6 +1176,31 @@ To: recipient@example.com
       }
     }
     applyBtn.addEventListener('click', applyTransformations);
+
+    function applyCustomName() {
+      let text = outputArea.value || inputArea.value;
+      if (!text.trim()) { alert("Paste, import, or clean a header first."); return; }
+      const customName = customNameInput.value.trim();
+      if (!customName) { alert("Please enter a custom From name."); return; }
+      if (actionsApplied.fromName) { alert("Custom From Name has already been applied to this content."); return; }
+      
+      const fromRegex = /^From:\s*("([^"]+)"|'([^']+)'|[^<]+)?\s*<([^>]+)>/gmi;
+      if (fromRegex.test(text)) {
+        text = text.replace(fromRegex, (match, p1, p2, p3, email) => {
+          return `From: "${customName}" <${email}>`;
+        });
+      } else {
+        alert("No 'From' header found to modify.");
+        return;
+      }
+      
+      outputArea.value = text.trim();
+      actionsApplied.fromName = true;
+      fromNameStatus.style.display = 'block';
+      addToHistory('fromName', text, null, null, customName);
+      maybeUpdatePreview();
+    }
+    applyCustomNameBtn.addEventListener('click', applyCustomName);
 
     function applyCustomSubject() {
       let text = outputArea.value || inputArea.value;
@@ -1517,3 +1546,4 @@ To: recipient@example.com
   </script>
 </body>
 </html>
+```

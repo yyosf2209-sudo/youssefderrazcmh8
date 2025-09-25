@@ -1134,18 +1134,36 @@ To: recipient@example.com
       if (!text.trim()) { alert("Paste, import, or clean a header first."); return; }
       let changed = false;
 
+      // Updated RDNS logic
       if (document.getElementById("toggleRdns").checked && !actionsApplied.rdns) {
-        text = text.replace(/^From:\s*(.*?)\s*<([^@>]+)@([^>]+)>/gmi, (match, displayName, username, domain) => {
-          return `From: ${displayName.trim()} <${username}@[RDNS]>`;
+        const rdnsRegex = /^(From:\s*.*)@([^>\s]+)(>.*)?$/gmi;
+        let rdnsModified = false;
+        text = text.replace(rdnsRegex, (match, prefix, domain, suffix = '') => {
+            rdnsModified = true;
+            return `${prefix}@[RDNS]${suffix}`;
         });
-        actionsApplied.rdns = true; rdnsStatus.style.display = 'block'; changed = true;
+        if (rdnsModified) {
+            actionsApplied.rdns = true;
+            rdnsStatus.style.display = 'block';
+            changed = true;
+        }
       }
+      
+      // P_RPATH logic, now identical to RDNS
       if (document.getElementById("toggleRpath").checked && !actionsApplied.rpath) {
-        text = text.replace(/^From:\s*(.*?)\s*<([^@>]+)@([^>]+)>/gmi, (match, displayName, username, domain) => {
-          return `From: ${displayName.trim()} <${username}@[P_RPATH]>`;
+        const rpathRegex = /^(From:\s*.*)@([^>\s]+)(>.*)?$/gmi;
+        let rpathModified = false;
+        text = text.replace(rpathRegex, (match, prefix, domain, suffix = '') => {
+            rpathModified = true;
+            return `${prefix}@[P_RPATH]${suffix}`;
         });
-        actionsApplied.rpath = true; rpathStatus.style.display = 'block'; changed = true;
+        if (rpathModified) {
+            actionsApplied.rpath = true;
+            rpathStatus.style.display = 'block';
+            changed = true;
+        }
       }
+
       if (document.getElementById("toggleEid").checked && !actionsApplied.eid) {
         text = text.replace(/^Message-ID:\s*<([^@>]+)@([^>]+)>/gmi, "Message-ID: <$1[eid]@$2>");
         actionsApplied.eid = true; eidStatus.style.display = 'block'; changed = true;
@@ -1172,6 +1190,7 @@ To: recipient@example.com
     }
     applyBtn.addEventListener('click', applyTransformations);
 
+    // Updated Custom From Name logic
     function applyCustomName() {
       let text = outputArea.value || inputArea.value;
       if (!text.trim()) { alert("Paste, import, or clean a header first."); return; }
@@ -1179,21 +1198,20 @@ To: recipient@example.com
       if (!customName) { alert("Please enter a custom From name."); return; }
       if (actionsApplied.fromName) { alert("Custom From Name has already been applied to this content."); return; }
       
-      const fromRegex = /^From:\s*("([^"]+)"|'([^']+)'|[^<]+)?\s*<([^>]+)>/gmi;
-      if (fromRegex.test(text)) {
-        text = text.replace(fromRegex, (match, p1, p2, p3, email) => {
-          return `From: "${customName}" <${email}>`;
-        });
-      } else {
-        alert("No 'From' header found to modify.");
-        return;
-      }
+      const fromRegex = /^From:.*<([^>]+)>.*$/gmi;
       
-      outputArea.value = text.trim();
-      actionsApplied.fromName = true;
-      fromNameStatus.style.display = 'block';
-      addToHistory('fromName', text, null, null, customName);
-      maybeUpdatePreview();
+      if (fromRegex.test(text)) {
+        text = text.replace(fromRegex, (match, email) => {
+          return `From: ${customName} <${email}>`;
+        });
+        outputArea.value = text.trim();
+        actionsApplied.fromName = true;
+        fromNameStatus.style.display = 'block';
+        addToHistory('fromName', text, null, null, customName);
+        maybeUpdatePreview();
+      } else {
+        alert("No 'From' header with an angle-bracketed email found to modify.");
+      }
     }
     applyCustomNameBtn.addEventListener('click', applyCustomName);
 
@@ -1379,9 +1397,8 @@ To: recipient@example.com
             }[m]));
             break;
           case 'hex':
-            result = Array.from(text).map(c => 
-              c.charCodeAt(0).toString(16).padStart(2, '0')
-            ).join(' ');
+            const hexChars = Array.from(text).map(c => c.charCodeAt(0).toString(16).padStart(2, '0'));
+            result = hexChars.join(' ');
             break;
           case 'quoted-printable':
             result = quotedPrintableEncode(text);

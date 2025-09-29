@@ -310,7 +310,7 @@
     .copy-btn { background: linear-gradient(135deg, #2ecc71, #27ae60); }
     .history-btn { background: linear-gradient(135deg, var(--history), var(--history-darker)); }
     .clear-btn.extraction-clear { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-    .info-btn { background: linear-gradient(135deg, var(--info), var(--info-darker)); } /* Added for new button */
+    .info-btn { background: linear-gradient(135deg, var(--info), var(--info-darker)); }
 
 
     /* Enhanced tabs */
@@ -557,21 +557,6 @@
     .output-section {
       grid-column: 2;
       grid-row: 2;
-    }
-    
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .section-header h3 {
-      margin: 28px 0 15px; /* Keep original margin */
-    }
-    
-    .section-header .btn {
-      padding: 10px 18px;
-      font-size: 13px;
     }
 
     .insert-section {
@@ -1256,10 +1241,7 @@ To: recipient@example.com
             </div>
 
             <div class="output-section">
-              <div class="section-header">
-                <h3>Cleaned STR:</h3>
-                <button class="btn info-btn" id="removeEmptyLinesBtn">🧹 Remove Empty Lines</button>
-              </div>
+              <h3>Cleaned STR:</h3>
               <textarea id="output" placeholder="Result will appear here..."></textarea>
             </div>
 
@@ -1436,7 +1418,6 @@ To: recipient@example.com
     const inputArea = document.getElementById('input');
     const outputArea = document.getElementById('output');
     const headersBox = document.getElementById('headersBox');
-    const removeEmptyLinesBtn = document.getElementById('removeEmptyLinesBtn');
 
     // Transformation buttons
     const toggleRdns = document.getElementById('toggleRdns');
@@ -1585,7 +1566,7 @@ To: recipient@example.com
       });
     }
 
-// Clean header functionality - PROPERLY FIXED VERSION
+    // Clean header functionality
     cleanBtn.addEventListener('click', () => {
       let text = inputArea.value;
       if (!text.trim()) {
@@ -1607,56 +1588,14 @@ To: recipient@example.com
         text = text.replace(regex, '');
       });
       
-      // Clean up extra newlines - PROPERLY FIXED
-      // First trim the text
-      text = text.trim();
-      
-      // Split by lines, filter out empty lines at the beginning until we hit content
-      const lines = text.split('\n');
-      const cleanedLines = [];
-      let foundContent = false;
-      
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        
-        // Once we find the first non-empty line, we've found content
-        if (!foundContent && line.trim()) {
-          foundContent = true;
-        }
-        
-        // If we've found content, keep the line
-        if (foundContent) {
-          cleanedLines.push(line);
-        }
-      }
-      
-      // Join the lines back and remove any trailing empty lines
-      text = cleanedLines.join('\n').replace(/\n\s*$/, '');
-      
-      // Now handle multiple consecutive empty lines in the middle of content
-      // Replace 2+ consecutive newlines with just one blank line (2 newlines total)
-      text = text.replace(/\n{3,}/g, '\n\n');
-      
-      // Clean up any lines that only have whitespace
-      text = text.replace(/\n[ \t]+\n/g, '\n\n');
-      text = text.replace(/\n[ \t]+$/g, '\n');
-      
-      outputArea.value = text;
-      resetTransformations();
-    });
-
-    // Remove empty lines functionality
-    removeEmptyLinesBtn.addEventListener('click', () => {
-      let text = outputArea.value;
-      if (!text.trim()) return;
-
-      // Split text into lines, filter out any that are empty or contain only whitespace, then join back.
+      // Join the lines back and then remove all empty/whitespace-only lines
       const cleanedText = text
         .split('\n')
         .filter(line => line.trim() !== '')
         .join('\n');
       
       outputArea.value = cleanedText;
+      resetTransformations();
     });
     
     // Apply transformations functionality

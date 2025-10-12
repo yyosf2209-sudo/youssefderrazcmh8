@@ -312,7 +312,6 @@
     .clear-btn.extraction-clear { background: linear-gradient(135deg, #e74c3c, #c0392b); }
     .info-btn { background: linear-gradient(135deg, var(--info), var(--info-darker)); }
 
-
     /* Enhanced tabs */
     .tabs {
       display: flex;
@@ -1303,7 +1302,7 @@ To: recipient@example.com
       <div class="tab-content" id="extraction">
         <div class="input-section">
             <h3>Input Text</h3>
-            <textarea id="inputText" placeholder="Paste your text here...">Example text with IPs like 192.168.1.1 and 10.0.0.1, domains like google.com and example.org, and server names like s_cmh8_2982, sr_cmh8_2982, server01 and db-server.</textarea>
+            <textarea id="inputText" placeholder="Paste your text here...">Example text with IPs like 192.168.1.1 and 10.0.0.1, domains like google.com and example.org, and server names like s_cmh8_2005, sr_cmh3_2485, sl_cmh9_2225, server01 and db-server.</textarea>
             
             <div class="extraction-options">
                 <div class="option"> <input type="checkbox" id="extractIPs" checked> <label for="extractIPs">Extract IP Addresses</label> </div>
@@ -1311,7 +1310,7 @@ To: recipient@example.com
                 <div class="option"> <input type="checkbox" id="extractDomains" checked> <label for="extractDomains">Extract Domains</label> </div>
             </div>
             
-            <div class="server-pattern-info"> <strong>Server Pattern Detection:</strong> The tool now recognizes server names like s_cmh8_2982 and sr_cmh8_2982 </div>
+            <div class="server-pattern-info"> <strong>Enhanced Server Pattern Detection:</strong> The tool now recognizes server names like s_cmh8_2005, sr_cmh3_2485, and sl_cmh9_2225 with any numbers </div>
             <div class="auto-extract-info"> <strong>Auto-Extract Enabled:</strong> Results update automatically as you type or change options. </div>
             <div class="buttons"> 
               <button class="copy-btn btn" id="copyExtractionBtn">Copy Results</button> 
@@ -1931,7 +1930,8 @@ To: recipient@example.com
       }
 
       if (options.servers) {
-        const serverRegex = /\b(?:s|sr)_[a-zA-Z]+\d+_\d+\b|\b(?:server|srv|host)[-_]?[a-zA-Z0-9]+\b/gi;
+        // Updated server pattern to include s_cmhX_XXXX, sr_cmhX_XXXX, sl_cmhX_XXXX
+        const serverRegex = /\b(?:s|sr|sl)_cmh\d+_\d+\b/gi;
         results.servers = text.match(serverRegex) || [];
       }
 

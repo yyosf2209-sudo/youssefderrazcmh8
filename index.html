@@ -13,14 +13,14 @@
       --danger: #ef4444; --danger-darker: #dc2626; --danger-glow: rgba(239, 68, 68, 0.3);
       --primary: #3b82f6; --primary-darker: #2563eb; --primary-glow: rgba(59, 130, 246, 0.3);
       --history: #8b5cf6; --history-darker: #7c3aed; --history-glow: rgba(139, 92, 246, 0.3);
-      
+
       --bg1: #f8fafc; --bg2: #f1f5f9; --text: #1e293b; --muted: #64748b; --border: #e2e8f0;
       --panel: #ffffff; --shadow: rgba(0, 0, 0, 0.08); --shadow-hover: rgba(0, 0, 0, 0.12);
-      
+
       --dark-bg1: #0f172a; --dark-bg2: #1e293b; --dark-text: #f1f5f9; --dark-muted: #94a3b8;
       --dark-border: rgba(255, 255, 255, 0.1); --dark-shadow: rgba(0, 0, 0, 0.3);
       --dark-panel-bg: rgba(30, 41, 59, 0.7); --dark-component-bg: rgba(15, 23, 42, 0.5);
-      
+
       --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-xl: 18px;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -74,27 +74,27 @@
       animation-iteration-count: infinite;
     }
 
-    #stars1 { 
-      background-size: 200px 200px; 
-      animation-duration: 120s; 
-      background-image: 
-        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)), 
-        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)), 
+    #stars1 {
+      background-size: 200px 200px;
+      animation-duration: 120s;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
         radial-gradient(1px 1px at 90px 40px, #ddd, rgba(0,0,0,0));
     }
 
-    #stars2 { 
-      background-size: 300px 300px; 
-      animation-duration: 100s; 
-      background-image: 
+    #stars2 {
+      background-size: 300px 300px;
+      animation-duration: 100s;
+      background-image:
         radial-gradient(1px 1px at 150px 120px, #ddd, rgba(0,0,0,0)),
         radial-gradient(1px 1px at 10px 90px, #eee, rgba(0,0,0,0));
     }
 
-    #stars3 { 
-      background-size: 400px 400px; 
-      animation-duration: 80s; 
-      background-image: 
+    #stars3 {
+      background-size: 400px 400px;
+      animation-duration: 80s;
+      background-image:
         radial-gradient(1px 1px at 180px 140px, #ddd, rgba(0,0,0,0));
     }
 
@@ -130,7 +130,7 @@
       transition: var(--transition-slow);
       animation: fadeInUp 0.6s ease-out forwards;
       border: 1px solid transparent;
-      box-shadow: 
+      box-shadow:
         0 10px 40px var(--shadow),
         0 0 0 1px rgba(0, 0, 0, 0.02);
       backdrop-filter: blur(10px);
@@ -229,7 +229,7 @@
     textarea:focus, input[type=text]:focus {
       outline: none;
       border-color: var(--brand);
-      box-shadow: 
+      box-shadow:
         inset 0 2px 4px var(--shadow),
         0 0 0 3px var(--brand-glow);
       transform: translateY(-1px);
@@ -311,6 +311,7 @@
     .history-btn { background: linear-gradient(135deg, var(--history), var(--history-darker)); }
     .clear-btn.extraction-clear { background: linear-gradient(135deg, #e74c3c, #c0392b); }
     .info-btn { background: linear-gradient(135deg, var(--info), var(--info-darker)); }
+
 
     /* Enhanced tabs */
     .tabs {
@@ -477,7 +478,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--dark-border);
-      box-shadow: 
+      box-shadow:
         0 20px 60px var(--dark-shadow),
         0 0 0 1px rgba(255, 255, 255, 0.05);
     }
@@ -496,7 +497,7 @@
     body.dark-mode textarea:focus,
     body.dark-mode input[type=text]:focus {
       border-color: var(--brand);
-      box-shadow: 
+      box-shadow:
         inset 0 2px 6px rgba(0,0,0,0.3),
         0 0 0 3px var(--brand-glow);
     }
@@ -508,7 +509,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    body.dark-mode h3, 
+    body.dark-mode h3,
     body.dark-mode label {
       color: var(--dark-text);
     }
@@ -594,21 +595,21 @@
         padding: 20px;
         border-radius: var(--radius-lg);
       }
-      
+
       .buttons {
         justify-content: center;
       }
-      
+
       .btn {
         flex: 1;
         min-width: 140px;
       }
-      
+
       .dark-mode-toggle {
         top: 15px;
         right: 15px;
       }
-      
+
       .history-toggle {
         top: 15px;
         right: 85px;
@@ -677,7 +678,8 @@
 
     /* Enhanced info boxes */
     .auto-extract-info,
-    .server-pattern-info {
+    .server-pattern-info,
+    .ip-association-info {
       padding: 16px 20px;
       border-radius: var(--radius-lg);
       margin-top: 15px;
@@ -696,6 +698,12 @@
       background: rgba(245, 158, 11, 0.1);
       color: #92400e;
       border-left-color: var(--warn);
+    }
+
+    .ip-association-info {
+      background: rgba(139, 92, 246, 0.1);
+      color: #5b21b6;
+      border-left-color: var(--history);
     }
 
     /* Enhanced output box */
@@ -1089,7 +1097,6 @@
   </div>
 
   <div class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode"></div>
-
   <button class="history-toggle btn history-btn" id="historyToggle">
     <span>📜 History</span>
   </button>
@@ -1127,22 +1134,11 @@
         <div class="main-layout">
           <div class="left-panel">
             <label for="input">Paste NEWSLETTER:</label>
-            <textarea id="input" placeholder="Paste header here...">From: Restaurant Ordering System <help@newslitters.com>
-Subject: Test Email
-Date: Wed, 15 Nov 2023 10:30:00 +0000
-To: recipient@example.com
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test Email&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;p&gt;This is a test email content.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
-
-            <input id="fileInput" type="file" accept=".txt,.eml,text/*" style="display:none"/>
+            <p style="font-size: 13px; color: var(--muted); margin: -5px 0 10px 0;">
+              <b>For batch processing:</b> Separate each email with a new line containing exactly: <code>---END-OF-EMAIL---</code>
+            </p>
+            <textarea id="input" placeholder="Paste header here..."></textarea>
+            <input id="fileInput" type="file" accept=".txt,.eml,text/*" style="display:none" multiple/>
             <div class="buttons">
               <button class="btn import-btn" id="importBtn">📁 Import</button>
               <button class="btn clean-btn" id="cleanBtn">✨ Clean</button>
@@ -1150,12 +1146,13 @@ To: recipient@example.com
               <button class="btn clear-btn" id="clearBtn">🗑️ Clear</button>
               <button class="btn deselect-btn" id="deselectBtn">❌ Deselect Optional</button>
             </div>
-            
             <div class="filename-input">
-              <label for="exportFilename">Export filename:</label>
-              <input type="text" id="exportFilename" placeholder="Enter filename..." value="cleaned_header.txt" />
+              <label for="exportFilename">Export filename (Base):</label>
+              <input type="text" id="exportFilename" placeholder="Enter base filename..." value="cleaned_email" />
+              <div style="font-size:12px; color:var(--muted); flex-basis: 100%;">
+                Each email will be saved as: e.g., "cleaned_email_1.txt", "cleaned_email_2.txt"
+              </div>
             </div>
-
             <h3>Choose PARAMS to remove:</h3>
             <div class="always-box">
               <label><b>Fixed params (always removed) 🔒</b></label>
@@ -1166,13 +1163,11 @@ To: recipient@example.com
             <div id="headersBox" class="headers-box">
               <p style="color:var(--muted)"> Paste or Import a header to see available fields...</p>
             </div>
-
             <div class="options">
               <label>Custom From Name:</label>
               <input type="text" id="customName" placeholder="FROM NAME (leave empty to keep original)" value="" />
               <button class="btn custom-name-btn" id="applyCustomNameBtn">👤 Apply From Name</button>
               <div id="fromNameStatus" class="action-status">Already applied</div>
-              
               <div class="checkbox-group">
                 <div class="checkbox-item">
                   <input type="checkbox" id="toggleRdns"/>
@@ -1202,7 +1197,6 @@ To: recipient@example.com
               </div>
               <button class="btn apply-btn" id="applyBtn"> Apply Transformations</button>
             </div>
-
             <div class="options">
               <label>Custom Subject:</label>
               <input type="text" id="customSubject" placeholder="Enter custom subject..." />
@@ -1210,7 +1204,6 @@ To: recipient@example.com
               <div id="subjectStatus" class="action-status">Already applied</div>
             </div>
           </div>
-
           <div class="right-panel">
             <div class="preview-section">
               <div class="viewer-bar">
@@ -1223,7 +1216,6 @@ To: recipient@example.com
                 </div>
                 <label class="live-check"><input type="checkbox" id="liveToggle" checked /> Update while typing</label>
               </div>
-
               <div class="preview-wrap">
                 <div id="gmailPreview" style="display:block">
                   <div class="gmail-chrome">
@@ -1238,12 +1230,10 @@ To: recipient@example.com
                 <pre id="sourceView" class="code-view" style="display:none"><code id="codeBlock"></code></pre>
               </div>
             </div>
-
             <div class="output-section">
               <h3>Cleaned STR:</h3>
               <textarea id="output" placeholder="Result will appear here..."></textarea>
             </div>
-
             <div class="insert-section">
               <div class="options">
                 <label>Insert HTML:</label>
@@ -1262,24 +1252,21 @@ To: recipient@example.com
             <h3>Encode/Decode Text</h3>
             <label for="encodeInput">Input Text:</label>
             <textarea id="encodeInput" placeholder="Enter text to encode or decode..."></textarea>
-            
             <div class="encoding-options">
               <label><input type="radio" name="encodingType" value="base64" checked> Base64</label>
-            
+              <label><input type="radio" name="encodingType" value="url"> URL Encoding</label>
+              <label><input type="radio" name="encodingType" value="html"> HTML Entities</label>
               <label><input type="radio" name="encodingType" value="hex"> Hex</label>
               <label><input type="radio" name="encodingType" value="quoted-printable"> Quoted-Printable</label>
             </div>
-            
             <div class="buttons">
               <button class="btn encode-btn" id="encodeBtn">Encode</button>
               <button class="btn decode-btn" id="decodeBtn">Decode</button>
               <button class="btn clear-btn" id="clearEncodeBtn">Clear</button>
             </div>
-            
             <h3>Result:</h3>
             <textarea id="encodeOutput" placeholder="Result will appear here..."></textarea>
           </div>
-          
           <div class="col">
             <h3>About Encoding Types</h3>
             <div class="headers-box">
@@ -1289,7 +1276,6 @@ To: recipient@example.com
               <p><strong>Hex Encoding:</strong> Represents data with hexadecimal values (0-9, A-F).</p>
               <p><strong>Quoted-Printable:</strong> Encodes 8-bit characters into 7-bit ASCII. Used for MIME email messages.</p>
             </div>
-            
             <h3>Quick Actions</h3>
             <div class="buttons">
               <button class="btn copy-btn" id="copyEncodeBtn">Copy Result</button>
@@ -1301,37 +1287,63 @@ To: recipient@example.com
 
       <div class="tab-content" id="extraction">
         <div class="input-section">
-            <h3>Input Text</h3>
-            <textarea id="inputText" placeholder="Paste your text here...">Example text with IPs like 192.168.1.1 and 10.0.0.1, domains like google.com and example.org, and server names like s_cmh8_2005, sr_cmh3_2485, sl_cmh9_2225, server01 and db-server.</textarea>
-            
-            <div class="extraction-options">
-                <div class="option"> <input type="checkbox" id="extractIPs" checked> <label for="extractIPs">Extract IP Addresses</label> </div>
-                <div class="option"> <input type="checkbox" id="extractServers" checked> <label for="extractServers">Extract Server Names</label> </div>
-                <div class="option"> <input type="checkbox" id="extractDomains" checked> <label for="extractDomains">Extract Domains</label> </div>
+          <h3>Input Text</h3>
+          <textarea id="inputText" placeholder="Paste your email snippets here, separated by a blank line...">Call of Duty
+Complete your Call of Duty registration - 173.232.171.36
+VERIFY EMAIL NOW
+
+Example Company
+Another Subject Line
+Here is another IP: 192.168.1.1</textarea>
+          <div class="extraction-options">
+            <div class="option">
+              <input type="checkbox" id="associateIPs">
+              <label for="associateIPs">Associate IPs with Sender/Subject</label>
             </div>
-            
-            <div class="server-pattern-info"> <strong>Enhanced Server Pattern Detection:</strong> The tool now recognizes server names like s_cmh8_2005, sr_cmh3_2485, and sl_cmh9_2225 with any numbers </div>
-            <div class="auto-extract-info"> <strong>Auto-Extract Enabled:</strong> Results update automatically as you type or change options. </div>
-            <div class="buttons"> 
-              <button class="copy-btn btn" id="copyExtractionBtn">Copy Results</button> 
-              <button class="clear-btn extraction-clear btn" id="clearExtractionBtn">Clear Text</button> 
+            <div class="option">
+              <input type="checkbox" id="extractIPs" checked>
+              <label for="extractIPs">Extract IP Addresses (Simple)</label>
             </div>
+            <div class="option">
+              <input type="checkbox" id="extractServers" checked>
+              <label for="extractServers">Extract Server Names (Simple)</label>
+            </div>
+            <div class="option">
+              <input type="checkbox" id="extractDomains" checked>
+              <label for="extractDomains">Extract Domains (Simple)</label>
+            </div>
+          </div>
+          <div id="associationFilterContainer" style="display: none; margin-top: 15px;">
+            <label for="associationFilter">Filter by Sender or Subject:</label>
+            <input type="text" id="associationFilter" placeholder="Enter keyword to filter results..." style="max-width: 100%; margin-top: 6px;">
+          </div>
+          <div class="ip-association-info">
+            <strong>IP Association Format:</strong> For best results, paste each email snippet separated by a blank line, with the Sender on the first line and the Subject on the second.
+          </div>
+          <div class="auto-extract-info">
+            <strong>Auto-Extract Enabled:</strong> Results update automatically as you type or change options.
+          </div>
+          <div class="buttons">
+            <button class="copy-btn btn" id="copyExtractionBtn">Copy Results</button>
+            <button class="clear-btn extraction-clear btn" id="clearExtractionBtn">Clear Text</button>
+          </div>
         </div>
-        
         <div class="output-section">
-            <h3>Extracted Results</h3>
-            <div class="output-box" id="extractionOutputText"></div>
-            <p class="results-info" id="resultsInfo">No results yet. Start typing or paste text to see extracted items.</p>
+          <h3>Extracted Results</h3>
+          <div class="output-box" id="extractionOutputText"></div>
+          <p class="results-info" id="resultsInfo">No results yet. Start typing or paste text to see extracted items.</p>
         </div>
       </div>
     </div>
   </div>
 
   <script>
+    const EMAIL_DELIMITER = '---END-OF-EMAIL---';
+
     // Fixed always-selected params (locked - user cannot change these)
     const FIXED_SELECTED_PARAMS = [
       'ARC-Authentication-Results',
-      'ARC-Message-Signature', 
+      'ARC-Message-Signature',
       'ARC-Seal',
       'Authentication-Results',
       'DKIM-Signature',
@@ -1346,66 +1358,9 @@ To: recipient@example.com
       'sender'
     ];
 
-    // Tab functionality
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const tabId = tab.getAttribute('data-tab');
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(c => { 
-          c.classList.remove('active'); 
-          c.classList.remove('show'); 
-        });
-        tab.classList.add('active');
-        const activeContent = document.getElementById(tabId);
-        activeContent.classList.add('active');
-        setTimeout(() => { 
-          activeContent.classList.add('show'); 
-        }, 10);
-      });
-    });
-
-    // Dark mode functionality
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      darkModeToggle.classList.toggle('active');
-      const isDarkMode = document.body.classList.contains('dark-mode');
-      localStorage.setItem('darkMode', isDarkMode);
-    });
-
-    // Initialize dark mode from localStorage
-    window.addEventListener('load', () => {
-      const darkMode = localStorage.getItem('darkMode') === 'true';
-      if (darkMode) {
-        document.body.classList.add('dark-mode');
-        darkModeToggle.classList.add('active');
-      }
-    });
-
-    // History panel functionality
-    const historyToggle = document.getElementById('historyToggle');
-    const historyPanel = document.getElementById('historyPanel');
-    const closeHistoryBtn = document.getElementById('closeHistory');
-
-    historyToggle.addEventListener('click', () => {
-      historyPanel.classList.add('active');
-    });
-
-    closeHistoryBtn.addEventListener('click', () => {
-      historyPanel.classList.remove('active');
-    });
-
-    // Close history when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!historyPanel.contains(e.target) && e.target !== historyToggle && !historyToggle.contains(e.target)) {
-        historyPanel.classList.remove('active');
-      }
-    });
-
-    // Email Cleaner Functionality
+    // DOM Elements
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
     const fileInput = document.getElementById('fileInput');
     const importBtn = document.getElementById('importBtn');
     const cleanBtn = document.getElementById('cleanBtn');
@@ -1413,392 +1368,64 @@ To: recipient@example.com
     const clearBtn = document.getElementById('clearBtn');
     const deselectBtn = document.getElementById('deselectBtn');
     const applyBtn = document.getElementById('applyBtn');
-    const inputArea = document.getElementById('input');
-    const outputArea = document.getElementById('output');
     const headersBox = document.getElementById('headersBox');
+    const exportFilenameInput = document.getElementById('exportFilename');
+    const customNameInput = document.getElementById('customName');
+    const applyCustomNameBtn = document.getElementById('applyCustomNameBtn');
+    const insertTextarea = document.getElementById('insertText');
+    const insertBtn = document.getElementById('insertBtn');
+    const customSubjectInput = document.getElementById('customSubject');
+    const subjectBtn = document.getElementById('subjectBtn');
+    const liveToggle = document.getElementById('liveToggle');
+    const gmailFrame = document.getElementById('gmailFrame');
+    const sourceView = document.getElementById('sourceView');
+    const gmailPreview = document.getElementById('gmailPreview');
+    const codeBlock = document.getElementById('codeBlock');
+    const btnGmail = document.getElementById('btnGmail');
+    const btnSource = document.getElementById('btnSource');
 
-    // Transformation buttons
+    // Transformation Toggles
     const toggleRdns = document.getElementById('toggleRdns');
     const toggleRpath = document.getElementById('toggleRpath');
     const toggleEid = document.getElementById('toggleEid');
     const toggleIp = document.getElementById('toggleIp');
     const toggleHead = document.getElementById('toggleHead');
-    const applyCustomNameBtn = document.getElementById('applyCustomNameBtn');
-    const customNameInput = document.getElementById('customName');
-    const subjectBtn = document.getElementById('subjectBtn');
-    const customSubjectInput = document.getElementById('customSubject');
-    const insertBtn = document.getElementById('insertBtn');
-    const insertTextInput = document.getElementById('insertText');
 
     // Status elements
-    const rdnsStatus = document.getElementById('rdnsStatus');
-    const rpathStatus = document.getElementById('rpathStatus');
-    const eidStatus = document.getElementById('eidStatus');
-    const ipStatus = document.getElementById('ipStatus');
-    const headStatus = document.getElementById('headStatus');
-    const fromNameStatus = document.getElementById('fromNameStatus');
-    const subjectStatus = document.getElementById('subjectStatus');
-    const insertStatus = document.getElementById('insertStatus');
-
-    // Track applied transformations
-    let transformationsApplied = {
-      rdns: false,
-      rpath: false,
-      eid: false,
-      ip: false,
-      head: false,
-      fromName: false,
-      subject: false,
-      insert: false
+    const statusElements = {
+      fromName: document.getElementById('fromNameStatus'),
+      rdns: document.getElementById('rdnsStatus'),
+      rpath: document.getElementById('rpathStatus'),
+      eid: document.getElementById('eidStatus'),
+      ip: document.getElementById('ipStatus'),
+      head: document.getElementById('headStatus'),
+      insert: document.getElementById('insertStatus'),
+      subject: document.getElementById('subjectStatus')
     };
 
-    // Import file functionality
-    importBtn.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', async (evt) => {
-      const file = evt.target.files[0]; 
-      if (!file) return;
-      try {
-        const text = await file.text();
-        inputArea.value = text;
-        fileInput.value = '';
-        buildHeaderCheckboxes();
-        resetTransformations();
-      } catch (error) {
-        alert('Error reading file: ' + error.message);
-      }
-    });
+    // History elements (and others)
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const historyToggle = document.getElementById('historyToggle');
+    const historyPanel = document.getElementById('historyPanel');
+    const closeHistoryBtn = document.getElementById('closeHistory');
+    const historyItemsContainer = document.getElementById('historyItems');
+    const clearHistoryBtn = document.getElementById('clearHistory');
+    const historyCategories = document.querySelectorAll('.history-category');
 
-    // Reset transformations when new content is pasted
-    inputArea.addEventListener('input', () => {
-      buildHeaderCheckboxes();
-      resetTransformations();
-    });
+    // Extraction elements
+    const inputText = document.getElementById('inputText');
+    const extractionOutputText = document.getElementById('extractionOutputText');
+    const associateIPsCheckbox = document.getElementById('associateIPs');
+    const extractIPs = document.getElementById('extractIPs');
+    const extractServers = document.getElementById('extractServers');
+    const extractDomains = document.getElementById('extractDomains');
+    const associationFilterContainer = document.getElementById('associationFilterContainer');
+    const associationFilterInput = document.getElementById('associationFilter');
+    const resultsInfo = document.getElementById('resultsInfo');
+    const copyExtractionBtn = document.getElementById('copyExtractionBtn');
+    const clearExtractionBtn = document.getElementById('clearExtractionBtn');
 
-    function resetTransformations() {
-      transformationsApplied = {
-        rdns: false,
-        rpath: false,
-        eid: false,
-        ip: false,
-        head: false,
-        fromName: false,
-        subject: false,
-        insert: false
-      };
-      
-      // Hide all status messages
-      document.querySelectorAll('.action-status').forEach(status => {
-        status.style.display = 'none';
-      });
-      
-      // Uncheck all checkboxes
-      toggleRdns.checked = false;
-      toggleRpath.checked = false;
-      toggleEid.checked = false;
-      toggleIp.checked = false;
-      toggleHead.checked = false;
-    }
-
-    // Build header checkboxes with fixed selected params
-    function buildHeaderCheckboxes() {
-      const text = inputArea.value;
-      if (!text.trim()) {
-        headersBox.innerHTML = "<p style='color:var(--muted)'>Paste or Import a header to see available fields...</p>";
-        return;
-      }
-      
-      const matches = [...text.matchAll(/^([\w\-]+):/gmi)].map(m => m[1]);
-      const unique = [...new Set(matches)].sort();
-      
-      if (!unique.length) {
-        headersBox.innerHTML = "<p style='color:var(--muted)'>No headers found.</p>";
-        return;
-      }
-      
-      headersBox.innerHTML = "";
-      
-      // Separate fixed params from optional params
-      const fixedParams = [];
-      const optionalParams = [];
-      
-      unique.forEach(h => {
-        if (FIXED_SELECTED_PARAMS.includes(h)) {
-          fixedParams.push(h);
-        } else {
-          optionalParams.push(h);
-        }
-      });
-      
-      // Display fixed params first (always selected and locked)
-      if (fixedParams.length > 0) {
-        fixedParams.forEach(h => {
-          const id = "chk_" + h.replace(/[^a-z0-9]/gi, "_");
-          const div = document.createElement("div");
-          div.className = 'header-checkbox fixed-selected';
-          div.innerHTML = `
-            <input type="checkbox" id="${id}" data-header="${h}" checked disabled>
-            <label for="${id}">${h} 🔒</label>
-          `;
-          headersBox.appendChild(div);
-        });
-        
-        // Add separator
-        const separator = document.createElement("div");
-        separator.style.padding = "10px 0 5px 0";
-        separator.style.borderBottom = "1px solid var(--border)";
-        separator.style.marginBottom = "10px";
-        separator.innerHTML = '<strong style="color:var(--primary)">Optional Params (choose which to remove):</strong>';
-        headersBox.appendChild(separator);
-      }
-      
-      // Display optional params (unselected by default, user can choose)
-      optionalParams.forEach(h => {
-        const id = "chk_" + h.replace(/[^a-z0-9]/gi, "_");
-        const div = document.createElement("div");
-        div.className = 'header-checkbox optional';
-        div.innerHTML = `
-          <input type="checkbox" id="${id}" data-header="${h}">
-          <label for="${id}">${h}</label>
-        `;
-        headersBox.appendChild(div);
-      });
-    }
-
-    // Clean header functionality
-    cleanBtn.addEventListener('click', () => {
-      let text = inputArea.value;
-      if (!text.trim()) {
-        alert("Paste or import a header first.");
-        return;
-      }
-      
-      // Always remove fixed params
-      FIXED_SELECTED_PARAMS.forEach(header => {
-        const regex = new RegExp(`^${header}.*(?:\r?\n[ \t].*)*`, 'gmi');
-        text = text.replace(regex, '');
-      });
-      
-      // Remove optional params that are checked
-      const optionalChecks = headersBox.querySelectorAll("input[type=checkbox]:not(:disabled):checked");
-      optionalChecks.forEach(chk => {
-        const header = chk.dataset.header;
-        const regex = new RegExp(`^${header}.*(?:\r?\n[ \t].*)*`, 'gmi');
-        text = text.replace(regex, '');
-      });
-      
-      // Join the lines back and then remove all empty/whitespace-only lines
-      const cleanedText = text
-        .split('\n')
-        .filter(line => line.trim() !== '')
-        .join('\n');
-      
-      outputArea.value = cleanedText;
-      resetTransformations();
-    });
-    
-    // Apply transformations functionality
-    applyBtn.addEventListener('click', () => {
-      let text = outputArea.value || inputArea.value;
-      if (!text.trim()) {
-        alert("Please clean the header first or paste some content.");
-        return;
-      }
-
-      let changed = false;
-
-      // Apply RDNS transformation
-      if (toggleRdns.checked && !transformationsApplied.rdns) {
-        const rdnsRegex = /^(From:\s*.*)@([^>\s]+)(>.*)?$/gmi;
-        let rdnsModified = false;
-        text = text.replace(rdnsRegex, (match, prefix, domain, suffix = '') => {
-          rdnsModified = true;
-          return `${prefix}@[RDNS]${suffix}`;
-        });
-        if (rdnsModified) {
-          transformationsApplied.rdns = true;
-          rdnsStatus.style.display = 'block';
-          changed = true;
-        }
-      }
-
-      // Apply P_RPATH transformation
-      if (toggleRpath.checked && !transformationsApplied.rpath) {
-        const rpathRegex = /^(From:\s*.*)@([^>\s]+)(>.*)?$/gmi;
-        let rpathModified = false;
-        text = text.replace(rpathRegex, (match, prefix, domain, suffix = '') => {
-          rpathModified = true;
-          return `${prefix}@[P_RPATH]${suffix}`;
-        });
-        if (rpathModified) {
-          transformationsApplied.rpath = true;
-          rpathStatus.style.display = 'block';
-          changed = true;
-        }
-      }
-
-      // Apply eid transformation
-      if (toggleEid.checked && !transformationsApplied.eid) {
-        const eidRegex = /^Message-ID:\s*<([^@>]+)@([^>]+)>/gmi;
-        if (eidRegex.test(text)) {
-          text = text.replace(eidRegex, "Message-ID: <$1[eid]@$2>");
-          transformationsApplied.eid = true;
-          eidStatus.style.display = 'block';
-          changed = true;
-        }
-      }
-
-      // Apply ip transformation
-      if (toggleIp.checked && !transformationsApplied.ip) {
-        if (!text.includes("[ip]")) {
-          text = text.replace(/(<!DOCTYPE|<html|<img|<body|<head)/i, "\n[ip]\n$1");
-          transformationsApplied.ip = true;
-          ipStatus.style.display = 'block';
-          changed = true;
-        }
-      }
-
-      // Apply head/select transformation
-      if (toggleHead.checked && !transformationsApplied.head) {
-        if (!text.includes("<head><select>")) {
-          const headSelectPattern = /(<!DOCTYPE|<html|<body|<head)/i;
-          text = text.replace(headSelectPattern, "<head><select>\n$1");
-          transformationsApplied.head = true;
-          headStatus.style.display = 'block';
-          changed = true;
-        }
-      }
-
-      if (changed) {
-        outputArea.value = text.trim();
-      } else {
-        alert("No new transformations applied. These actions may have already been applied to this content.");
-      }
-    });
-
-    // Apply custom name functionality
-    applyCustomNameBtn.addEventListener('click', () => {
-      let text = outputArea.value || inputArea.value;
-      if (!text.trim()) {
-        alert("Please clean the header first or paste some content.");
-        return;
-      }
-
-      const customName = customNameInput.value.trim();
-      if (!customName) {
-        alert("Please enter a custom From name.");
-        return;
-      }
-
-      if (transformationsApplied.fromName) {
-        alert("Custom From Name has already been applied to this content.");
-        return;
-      }
-
-      const fromRegex = /^From:\s*(.*?)\s*<([^>]+)>/gmi;
-      if (fromRegex.test(text)) {
-        text = text.replace(fromRegex, `From: ${customName} <$2>`);
-        outputArea.value = text.trim();
-        transformationsApplied.fromName = true;
-        fromNameStatus.style.display = 'block';
-      } else {
-        alert("No 'From' header with an angle-bracketed email found to modify.");
-      }
-    });
-
-    // Apply custom subject functionality
-    subjectBtn.addEventListener('click', () => {
-      let text = outputArea.value || inputArea.value;
-      if (!text.trim()) {
-        alert("Please clean the header first or paste some content.");
-        return;
-      }
-
-      const customSubject = customSubjectInput.value.trim();
-      if (!customSubject) {
-        alert("Please enter a custom subject.");
-        return;
-      }
-
-      if (transformationsApplied.subject) {
-        alert("Subject has already been applied to this content.");
-        return;
-      }
-
-      if (text.includes("Subject:")) {
-        text = text.replace(/^Subject:.*$/gmi, `Subject: ${customSubject}`);
-      } else {
-        text = `Subject: ${customSubject}\n${text}`;
-      }
-      
-      outputArea.value = text;
-      transformationsApplied.subject = true;
-      subjectStatus.style.display = 'block';
-    });
-
-    // Insert HTML functionality
-    insertBtn.addEventListener('click', () => {
-      let text = outputArea.value || inputArea.value;
-      if (!text.trim()) {
-        alert("Please clean the header first or paste some content.");
-        return;
-      }
-
-      const customText = insertTextInput.value.trim();
-      if (!customText) {
-        alert("Please enter some HTML to insert.");
-        return;
-      }
-
-      if (transformationsApplied.insert) {
-        alert("HTML has already been inserted into this content.");
-        return;
-      }
-
-      const headSelectPattern = /(<head>\s*<select>)/i;
-      if (headSelectPattern.test(text)) {
-        text = text.replace(headSelectPattern, `\n${customText}\n$1`);
-        outputArea.value = text;
-        transformationsApplied.insert = true;
-        insertStatus.style.display = 'block';
-      } else {
-        alert("No <head><select> tag found in the content. Please apply the 'Add <head><select>' option first.");
-      }
-    });
-
-    // Clear functionality
-    clearBtn.addEventListener('click', () => {
-      inputArea.value = '';
-      outputArea.value = '';
-      headersBox.innerHTML = "<p style='color:var(--muted)'>Paste or Import a header to see available fields...</p>";
-      resetTransformations();
-    });
-
-    // Deselect all functionality (only affects optional params)
-    deselectBtn.addEventListener('click', () => {
-      headersBox.querySelectorAll("input[type=checkbox]:not(:disabled)").forEach(chk => {
-        chk.checked = false;
-      });
-    });
-
-    // Export functionality
-    exportBtn.addEventListener('click', () => {
-      const text = outputArea.value;
-      if (!text.trim()) {
-        alert("Nothing to export.");
-        return;
-      }
-      
-      const filename = document.getElementById('exportFilename').value || 'cleaned_header.txt';
-      const blob = new Blob([text], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename.endsWith('.txt') ? filename : filename + '.txt';
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    // Encoder/Decoder Functionality
+    // Encoder/Decoder elements
     const encodeInput = document.getElementById('encodeInput');
     const encodeOutput = document.getElementById('encodeOutput');
     const encodeBtn = document.getElementById('encodeBtn');
@@ -1808,213 +1435,888 @@ To: recipient@example.com
     const swapEncodeBtn = document.getElementById('swapEncodeBtn');
     const encodingTypeRadios = document.querySelectorAll('input[name="encodingType"]');
 
-    encodeBtn.addEventListener('click', () => {
-      const text = encodeInput.value;
-      const encodingType = document.querySelector('input[name="encodingType"]:checked').value;
-      
-      let result = '';
-      try {
-        switch(encodingType) {
-          case 'base64':
-            result = btoa(unescape(encodeURIComponent(text)));
-            break;
-          case 'url':
-            result = encodeURIComponent(text);
-            break;
-          case 'html':
-            result = text.replace(/[&<>"']/g, m => ({
-              '&': '&amp;', '<': '&lt;', '>': '&gt;',
-              '"': '&quot;', "'": '&#39;'
-            }[m]));
-            break;
-          case 'hex':
-            result = Array.from(text).map(c => 
-              c.charCodeAt(0).toString(16).padStart(2, '0')
-            ).join(' ');
-            break;
-          case 'quoted-printable':
-            // Simple quoted-printable implementation
-            result = text.split('').map(char => {
-              const code = char.charCodeAt(0);
-              return code > 127 ? '=' + code.toString(16).toUpperCase() : char;
-            }).join('');
-            break;
-        }
-        encodeOutput.value = result;
-      } catch (error) {
-        encodeOutput.value = 'Error: ' + error.message;
+
+    // --------------------------------------------------------------------------------
+    // Core Email Processing Logic
+    // --------------------------------------------------------------------------------
+
+    let currentHeaders = [];
+    let selectedOptionalParams = new Set();
+    let history = JSON.parse(localStorage.getItem('emailSuiteHistory')) || [];
+
+    // Helper to escape HTML for display in source view
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    // Function to update the preview frame content
+    function updatePreview(content) {
+      const isHtml = content.includes('<html') || content.includes('<body');
+
+      // If we are in Source View mode, display the content directly
+      if (sourceView.style.display !== 'none') {
+        // Line number display
+        const escapedContent = escapeHtml(content);
+        const lines = escapedContent.split('\n');
+        codeBlock.innerHTML = '';
+        lines.forEach(line => {
+          const span = document.createElement('span');
+          span.textContent = line;
+          codeBlock.appendChild(span);
+        });
       }
+
+      // Always update the iframe for Gmail View
+      if (isHtml) {
+        // Content is an HTML document
+        const iframeDoc = gmailFrame.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(content);
+        iframeDoc.close();
+      } else {
+        // Content is not a full HTML document (likely just headers/text)
+        const iframeDoc = gmailFrame.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(`<html><body><pre style="white-space: pre-wrap; word-wrap: break-word; font-family: sans-serif; padding: 15px;">${escapeHtml(content)}</pre></body></html>`);
+        iframeDoc.close();
+      }
+    }
+
+    /**
+     * Applies the user's defined transformations to a single email's content.
+     * @param {string} emailContent - The content of a single email after initial preparation (Custom Name/Subject).
+     * @returns {string} The transformed email content.
+     */
+     function applySingleEmailTransformations(emailContent) {
+        let modifiedContent = emailContent;
+        const isRdnsChecked = toggleRdns.checked;
+        const isRpathChecked = toggleRpath.checked;
+        const isEidChecked = toggleEid.checked;
+        const isIpChecked = toggleIp.checked;
+        const isHeadChecked = toggleHead.checked;
+        const insertText = insertTextarea.value.trim();
+
+        // 1. [RDNS] & [P_RPATH] in From Name (replace domain after @)
+        if (isRdnsChecked || isRpathChecked) {
+            // Regex: (^From:\s*.*?<*[^@\s<]+) \@ ([^@>\s]+) (.*)
+            const fromRegex = /(^From:\s*.*?<*[^@\s<]+)\@([^@>\s]+)(.*)/gim; // Only targets 'From:'
+
+            let replacementString = '';
+            if (isRdnsChecked) replacementString += '[RDNS]';
+            if (isRpathChecked) replacementString += '[P_RPATH]';
+
+            if (replacementString) {
+                 modifiedContent = modifiedContent.replace(fromRegex, (match, p1, p2, p3) => {
+                    return p1 + '@' + replacementString + p3;
+                });
+            }
+        }
+
+        // 2. [eid] in Message-ID (before @)
+        if (isEidChecked) {
+            const messageIdRegex = /(Message-ID:\s*<)([^@]+)(\@.*?>)/im;
+            modifiedContent = modifiedContent.replace(messageIdRegex, (match, p1, p2, p3) => {
+                return p1 + p2 + '[eid]' + p3;
+            });
+        }
+
+        // 3. Separate headers from body
+        const headerBodySplitRegex = /^([\s\S]*?)(\r?\n\r?\n)([\s\S]*)$/;
+        const match = modifiedContent.match(headerBodySplitRegex);
+
+        if (match) {
+            let headers = match[1];
+            let separator = match[2]; // The double newline
+            let body = match[3];
+
+            // --- Apply Body Transformations ---
+
+            // 4. Custom HTML Insert (Insert Textarea)
+            if (insertText) {
+                const headTagRegex = /(<head[^>]*>)/i;
+                if (headTagRegex.test(body)) {
+                    body = body.replace(headTagRegex, `$1\n${insertText}\n`);
+                } else {
+                    body = insertText + '\n' + body;
+                }
+            }
+
+            // 5. <head><select> insertion
+            if (isHeadChecked) {
+                const headTagForSelect = /<head>/i;
+                 if (headTagForSelect.test(body) && !body.match(/<head>\s*<select/i)) {
+                     body = body.replace(headTagForSelect, '<head><select style="display:none"></select>');
+                 } else if (!headTagForSelect.test(body)) {
+                     body = '<head><select style="display:none"></select></head>\n' + body;
+                 }
+            }
+
+            // 6. [ip] Insertion (Body) - *** UPDATED PRIORITY ***
+            if (isIpChecked) {
+                let ipPlaceholder = '[ip]';
+                let inserted = false; 
+
+                // Priority 1: <!DOCTYPE
+                if (body.match(/<!DOCTYPE/i)) {
+                    body = body.replace(/(<!DOCTYPE)/i, ipPlaceholder + '\n' + '$1');
+                    inserted = true;
+                }
+                // Priority 2: <html...> (NEW)
+                if (!inserted && body.match(/<html/i)) {
+                    body = body.replace(/(<html)/i, ipPlaceholder + '\n' + '$1');
+                    inserted = true;
+                }
+                // Priority 3: <img...>
+                if (!inserted && body.match(/<img/i)) {
+                    body = body.replace(/(<img)/i, ipPlaceholder + '\n' + '$1');
+                    inserted = true;
+                }
+                // Priority 4: <body...>
+                if (!inserted && body.match(/<body/i)) {
+                    body = body.replace(/(<body)/i, ipPlaceholder + '\n' + '$1');
+                    inserted = true;
+                }
+                // Priority 5: Prepend to body if none found
+                if (!inserted) {
+                    body = ipPlaceholder + '\n' + body;
+                }
+            }
+
+            modifiedContent = headers + separator + body;
+        } else {
+             console.warn("Could not reliably detect header/body split. Body transformations might not apply.");
+        }
+
+        return modifiedContent;
+    }
+
+
+    // Main processing function (handles cleaning, optional transformations, and batching)
+    function processInput() {
+      let content = input.value;
+      if (!content.trim()) {
+        output.value = '';
+        updatePreview('');
+        currentHeaders = [];
+        buildHeaderCheckboxes();
+        return;
+      }
+
+      // 1. Separate all emails using the delimiter
+      const emails = content.split(new RegExp(EMAIL_DELIMITER, 'gi'));
+
+      const cleanedEmails = emails.map((email, index) => {
+        email = email.trim();
+        if (!email) return '';
+
+        // Extract headers (first part until the first blank line) and body
+        const headerEndIndex = email.indexOf('\n\n');
+        let header = '';
+        let body = email;
+
+        if (headerEndIndex !== -1) {
+          header = email.substring(0, headerEndIndex);
+          body = email.substring(headerEndIndex + 2);
+        }
+
+        // --- Store original header for UI checkbox generation ---
+        let originalHeaderForUI = header;
+
+        // --- Transformation Preparation (Applied before cleaning) ---
+        let currentHeader = header;
+
+        // a. Apply Custom From Name (Modifies existing line)
+        const customName = customNameInput.value.trim();
+        if (customName) {
+          currentHeader = currentHeader.replace(/^(From:.*<)/im, `From: ${customName} <`);
+        }
+
+        // b. Apply Custom Subject (Modifies existing line)
+        const customSubject = customSubjectInput.value.trim();
+        if (customSubject) {
+          currentHeader = currentHeader.replace(/^(Subject:.*)/im, `Subject: ${customSubject}`);
+        }
+
+        // Temporarily join the header and body for complex, in-line transformations
+        let tempEmail = currentHeader + (currentHeader ? '\n\n' : '') + body;
+
+        // c. Apply in-line transformations ([RDNS], [P_RPATH], [eid], [ip], <head><select>, custom HTML insert)
+        const transformedEmail = applySingleEmailTransformations(tempEmail);
+
+        // Split back into headers and body
+        const transformedParts = transformedEmail.match(/^([\s\S]*?)(\r?\n\r?\n)([\s\S]*)$/);
+        let transformedHeader = transformedEmail;
+        let transformedBody = '';
+
+        if (transformedParts) {
+            transformedHeader = transformedParts[1];
+            transformedBody = transformedParts[3];
+        }
+
+
+        // --- Header Cleaning ---
+        const paramsToRemove = new Set([...FIXED_SELECTED_PARAMS, ...Array.from(selectedOptionalParams)]);
+
+        const headerLines = transformedHeader.split('\n');
+        const cleanedHeaderLines = headerLines.filter(line => {
+          const headerKey = line.split(':')[0].trim();
+          // Keep the line if its key is NOT in the paramsToRemove set.
+          return !paramsToRemove.has(headerKey);
+        });
+
+        // Reconstruct the cleaned header
+        const cleanedHeader = cleanedHeaderLines.join('\n').trim();
+
+        // Reconstruct the final email
+        const finalEmail = cleanedHeader + (cleanedHeader ? '\n\n' : '') + transformedBody;
+
+        // For the first email in the batch, update the headers list for the UI
+        if (index === 0) {
+          // Base the UI list on the ORIGINAL header before cleaning/transformation markers
+          currentHeaders = originalHeaderForUI.split('\n')
+            .map(line => line.split(':')[0].trim())
+            .filter(key => key && key.length > 1) // Filter out empty strings or single characters
+            .filter((value, idx, self) => self.indexOf(value) === idx); // Unique headers
+          buildHeaderCheckboxes();
+        }
+
+        return finalEmail;
+      }).filter(e => e).join(`\n\n${EMAIL_DELIMITER}\n\n`); // Join cleaned emails with delimiter
+
+      output.value = cleanedEmails;
+      updatePreview(emails[0] || ''); // Preview only the first email of the original batch for consistency
+
+      // Update status indicators
+      Object.keys(statusElements).forEach(key => {
+        statusElements[key].style.display = 'none';
+      });
+    }
+
+    // Function to build the header checkboxes dynamically
+    function buildHeaderCheckboxes() {
+      headersBox.innerHTML = '';
+
+      if (currentHeaders.length === 0) {
+        headersBox.innerHTML = '<p style="color:var(--muted)"> Paste or Import a header to see available fields...</p>';
+        return;
+      }
+
+      const optionalHeaders = currentHeaders.filter(header => !FIXED_SELECTED_PARAMS.includes(header));
+      const fixedHeaders = currentHeaders.filter(header => FIXED_SELECTED_PARAMS.includes(header));
+
+      // Display Fixed Headers first
+      if (fixedHeaders.length > 0) {
+        const fixedGroup = document.createElement('div');
+        fixedGroup.innerHTML = '<label style="margin-top:0;">Fixed Headers (Always Removed):</label>';
+        fixedHeaders.forEach(header => {
+          const div = document.createElement('div');
+          div.className = 'header-checkbox fixed-selected';
+          div.innerHTML = `
+            <input type="checkbox" id="header-${header}" value="${header}" checked disabled>
+            <label for="header-${header}">${header}</label>
+          `;
+          fixedGroup.appendChild(div);
+        });
+        headersBox.appendChild(fixedGroup);
+      }
+
+      // Display Optional Headers
+      if (optionalHeaders.length > 0) {
+        const optionalGroup = document.createElement('div');
+        optionalGroup.innerHTML = '<label style="margin-top:15px;">Optional Headers (Toggle to Remove):</label>';
+        optionalHeaders.forEach(header => {
+          const div = document.createElement('div');
+          div.className = 'header-checkbox optional';
+          div.innerHTML = `
+            <input type="checkbox" id="header-${header}" value="${header}" ${selectedOptionalParams.has(header) ? 'checked' : ''}>
+            <label for="header-${header}">${header}</label>
+          `;
+          optionalGroup.appendChild(div);
+        });
+        headersBox.appendChild(optionalGroup);
+      }
+
+      // Add event listeners to optional checkboxes
+      headersBox.querySelectorAll('.header-checkbox.optional input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            selectedOptionalParams.add(e.target.value);
+          } else {
+            selectedOptionalParams.delete(e.target.value);
+          }
+          if (liveToggle.checked) {
+            processInput();
+          }
+        });
+      });
+    }
+
+    // --------------------------------------------------------------------------------
+    // Event Handlers for Cleaner Tab
+    // --------------------------------------------------------------------------------
+
+    input.addEventListener('input', () => {
+      if (liveToggle.checked) {
+        processInput();
+      }
+      // Re-extract headers on any input to update checkboxes
+      if (!input.value.trim()) {
+        currentHeaders = [];
+        buildHeaderCheckboxes();
+      } else if (currentHeaders.length === 0 || !liveToggle.checked) {
+        // Only run a quick header extraction without full processing if Live is off
+        const email = input.value.split(new RegExp(EMAIL_DELIMITER, 'gi'))[0];
+        const header = email.substring(0, email.indexOf('\n\n') > -1 ? email.indexOf('\n\n') : email.length);
+        currentHeaders = header.split('\n')
+            .map(line => line.split(':')[0].trim())
+            .filter(key => key && key.length > 1)
+            .filter((value, idx, self) => self.indexOf(value) === idx);
+        buildHeaderCheckboxes();
+      }
+    });
+
+    cleanBtn.addEventListener('click', () => {
+      processInput();
+      if (output.value.trim()) {
+        addToHistory('Cleaned Content', output.value.trim(), 'cleaned');
+      }
+    });
+
+    applyBtn.addEventListener('click', () => {
+      processInput();
+      // Show transformation status
+      if (toggleRdns.checked) statusElements.rdns.style.display = 'block';
+      if (toggleRpath.checked) statusElements.rpath.style.display = 'block';
+      if (toggleEid.checked) statusElements.eid.style.display = 'block';
+      if (toggleIp.checked) statusElements.ip.style.display = 'block';
+      if (toggleHead.checked) statusElements.head.style.display = 'block';
+      if (output.value.trim()) {
+        addToHistory('Applied Transformations', output.value.trim(), 'cleaned');
+      }
+    });
+
+    applyCustomNameBtn.addEventListener('click', () => {
+        processInput();
+        if (customNameInput.value.trim()) {
+            statusElements.fromName.style.display = 'block';
+        }
+    });
+
+    subjectBtn.addEventListener('click', () => {
+        processInput();
+        if (customSubjectInput.value.trim()) {
+            statusElements.subject.style.display = 'block';
+            addToHistory('Applied Custom Subject', customSubjectInput.value.trim(), 'subject');
+        }
+    });
+
+    insertBtn.addEventListener('click', () => {
+        processInput();
+        if (insertTextarea.value.trim()) {
+            statusElements.insert.style.display = 'block';
+            addToHistory('Inserted HTML Snippet', insertTextarea.value.trim(), 'htmlInsert');
+        }
+    });
+
+    // Import Button Logic (Handles single or multiple files)
+    importBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+      const files = event.target.files;
+      if (files.length === 0) return;
+
+      let fileContents = [];
+      let filesProcessed = 0;
+
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          fileContents[i] = e.target.result;
+          filesProcessed++;
+
+          if (filesProcessed === files.length) {
+            // All files processed. Join content with the delimiter.
+            input.value = fileContents.join(`\n\n${EMAIL_DELIMITER}\n\n`);
+            // Reset file input value to allow the same file(s) to be selected again
+            fileInput.value = '';
+            processInput();
+          }
+        };
+        reader.onerror = () => {
+          console.error(`Error reading file: ${files[i].name}`);
+          filesProcessed++;
+        };
+        reader.readAsText(files[i]);
+      }
+    });
+
+    // Export Button Logic for individual files
+    exportBtn.addEventListener('click', () => {
+        const content = output.value.trim();
+        if (!content) {
+            alert("Nothing to export. Clean an email first.");
+            return;
+        }
+
+        // Split cleaned content by the delimiter to get individual emails
+        const emails = content.split(new RegExp(`\\n\\n${EMAIL_DELIMITER}\\n\\n`, 'g')).filter(e => e.trim());
+
+        if (emails.length === 0) {
+            alert("No complete emails found to export after cleaning.");
+            return;
+        }
+
+        // Determine the base filename, removing any .txt extension if present
+        const baseFilename = exportFilenameInput.value.trim().replace(/\.txt$/, '') || 'cleaned_email';
+
+        // Iterate through emails and trigger a download for each
+        emails.forEach((email, index) => {
+            // Construct filename with an index
+            const filename = `${baseFilename}_${index + 1}.txt`;
+            const blob = new Blob([email], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            // Create and click a temporary link element to trigger the download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up the temporary URL and element
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        addToHistory('Exported Batch', `${emails.length} individual emails exported.`, 'export');
+    });
+
+    // Clear Button Logic
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      output.value = '';
+      currentHeaders = [];
+      selectedOptionalParams.clear();
+      buildHeaderCheckboxes();
+      updatePreview('');
+      Object.keys(statusElements).forEach(key => {
+        statusElements[key].style.display = 'none';
+      });
+      // Clear transformation checkboxes
+      toggleRdns.checked = false;
+      toggleRpath.checked = false;
+      toggleEid.checked = false;
+      toggleIp.checked = false;
+      toggleHead.checked = false;
+      customNameInput.value = '';
+      customSubjectInput.value = '';
+      insertTextarea.value = '';
+    });
+
+    // Deselect Optional Button
+    deselectBtn.addEventListener('click', () => {
+        selectedOptionalParams.clear();
+        buildHeaderCheckboxes();
+        if (liveToggle.checked) {
+            processInput();
+        }
+    });
+
+    // Live Update Toggle for Transformations
+    document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            if (liveToggle.checked && checkbox.id !== 'liveToggle') {
+                processInput();
+            }
+        });
+    });
+
+    // Live Update for subject and name
+    customNameInput.addEventListener('input', () => {
+        if (liveToggle.checked) {
+            processInput();
+        }
+    });
+    customSubjectInput.addEventListener('input', () => {
+        if (liveToggle.checked) {
+            processInput();
+        }
+    });
+    insertTextarea.addEventListener('input', () => {
+        if (liveToggle.checked) {
+            processInput();
+        }
+    });
+
+    // --------------------------------------------------------------------------------
+    // Preview Viewer Logic
+    // --------------------------------------------------------------------------------
+
+    btnGmail.addEventListener('click', () => {
+      btnGmail.classList.add('active');
+      btnSource.classList.remove('active');
+      gmailPreview.style.display = 'block';
+      sourceView.style.display = 'none';
+      updatePreview(input.value); // Refresh the preview frame
+    });
+
+    btnSource.addEventListener('click', () => {
+      btnSource.classList.add('active');
+      btnGmail.classList.remove('active');
+      sourceView.style.display = 'block';
+      gmailPreview.style.display = 'none';
+      updatePreview(input.value); // Refresh the code view
+    });
+
+    // --------------------------------------------------------------------------------
+    // Encoder/Decoder Logic
+    // --------------------------------------------------------------------------------
+
+    function encodeText(text, type) {
+        if (!text) return '';
+        switch (type) {
+            case 'base64':
+                return btoa(text);
+            case 'url':
+                return encodeURIComponent(text);
+            case 'html':
+                return escapeHtml(text).replace(/ /g, '&#32;');
+            case 'hex':
+                return Array.from(text).map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('');
+            case 'quoted-printable':
+                // Simple implementation: replace non-ASCII characters and = with =XX
+                return text.replace(/[\x80-\xff]/g, c => '=' + c.charCodeAt(0).toString(16).toUpperCase())
+                           .replace(/=/g, '=3D')
+                           .replace(/\s+$/gm, '='); // Soft line break for spaces at line end (basic QP)
+            default:
+                return text;
+        }
+    }
+
+    function decodeText(text, type) {
+        if (!text) return '';
+        try {
+            switch (type) {
+                case 'base64':
+                    return atob(text);
+                case 'url':
+                    return decodeURIComponent(text);
+                case 'html':
+                    const parser = new DOMParser();
+                    const dom = parser.parseFromString(`<!doctype html><body>${text}`, 'text/html');
+                    return dom.body.textContent;
+                case 'hex':
+                    return text.match(/.{1,2}/g).map(byte => String.fromCharCode(parseInt(byte, 16))).join('');
+                case 'quoted-printable':
+                    // Simple implementation: remove soft breaks, decode =XX, replace =3D
+                    return text.replace(/=\r?\n/g, '') // Remove soft line breaks
+                               .replace(/=([a-fA-F0-9]{2})/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)))
+                               .replace(/=3D/g, '='); // Decode =3D back to =
+                default:
+                    return text;
+            }
+        } catch (e) {
+            return 'Error decoding: ' + e.message;
+        }
+    }
+
+    encodeBtn.addEventListener('click', () => {
+        const text = encodeInput.value;
+        const type = document.querySelector('input[name="encodingType"]:checked').value;
+        encodeOutput.value = encodeText(text, type);
     });
 
     decodeBtn.addEventListener('click', () => {
-      const text = encodeInput.value;
-      const encodingType = document.querySelector('input[name="encodingType"]:checked').value;
-      
-      let result = '';
-      try {
-        switch(encodingType) {
-          case 'base64':
-            result = decodeURIComponent(escape(atob(text)));
-            break;
-          case 'url':
-            result = decodeURIComponent(text);
-            break;
-          case 'html':
-            result = text.replace(/&amp;/g, '&')
-                       .replace(/&lt;/g, '<')
-                       .replace(/&gt;/g, '>')
-                       .replace(/&quot;/g, '"')
-                       .replace(/&#39;/g, "'");
-            break;
-          case 'hex':
-            result = text.split(' ').map(hex =>
-              String.fromCharCode(parseInt(hex, 16))
-            ).join('');
-            break;
-          case 'quoted-printable':
-            result = text.replace(/=([A-Fa-f0-9]{2})/g, (_, hex) =>
-              String.fromCharCode(parseInt(hex, 16))
-            );
-            break;
-        }
-        encodeOutput.value = result;
-      } catch (error) {
-        encodeOutput.value = 'Error: ' + error.message;
-      }
+        const text = encodeInput.value;
+        const type = document.querySelector('input[name="encodingType"]:checked').value;
+        encodeOutput.value = decodeText(text, type);
     });
 
     clearEncodeBtn.addEventListener('click', () => {
-      encodeInput.value = '';
-      encodeOutput.value = '';
+        encodeInput.value = '';
+        encodeOutput.value = '';
     });
 
     copyEncodeBtn.addEventListener('click', () => {
-      encodeOutput.select();
-      document.execCommand('copy');
-      alert('Copied to clipboard!');
+        navigator.clipboard.writeText(encodeOutput.value).then(() => {
+            // Flash a copied message
+            const originalText = copyEncodeBtn.textContent;
+            copyEncodeBtn.textContent = 'Copied!';
+            setTimeout(() => { copyEncodeBtn.textContent = originalText; }, 2000);
+        });
     });
 
     swapEncodeBtn.addEventListener('click', () => {
-      const temp = encodeInput.value;
-      encodeInput.value = encodeOutput.value;
-      encodeOutput.value = temp;
+        const inputVal = encodeInput.value;
+        const outputVal = encodeOutput.value;
+        encodeInput.value = outputVal;
+        encodeOutput.value = inputVal;
     });
 
-    // Extraction Tool Functionality
-    const inputText = document.getElementById('inputText');
-    const extractionOutputText = document.getElementById('extractionOutputText');
-    const resultsInfo = document.getElementById('resultsInfo');
-    const copyExtractionBtn = document.getElementById('copyExtractionBtn');
-    const clearExtractionBtn = document.getElementById('clearExtractionBtn');
-    const extractIPs = document.getElementById('extractIPs');
-    const extractServers = document.getElementById('extractServers');
-    const extractDomains = document.getElementById('extractDomains');
+    // --------------------------------------------------------------------------------
+    // Extraction Tool Logic
+    // --------------------------------------------------------------------------------
 
     function performExtraction() {
-      const text = inputText.value;
-      const options = {
-        ips: extractIPs.checked,
-        servers: extractServers.checked,
-        domains: extractDomains.checked
-      };
+        const text = inputText.value;
+        if (!text) {
+            extractionOutputText.textContent = '';
+            resultsInfo.textContent = 'No results yet. Start typing or paste text to see extracted items.';
+            return;
+        }
 
-      const results = {
-        ips: [],
-        servers: [],
-        domains: []
-      };
+        const shouldAssociate = associateIPsCheckbox.checked;
+        const shouldExtractIPs = extractIPs.checked;
+        const shouldExtractServers = extractServers.checked;
+        const shouldExtractDomains = extractDomains.checked;
+        const filterKeyword = associationFilterInput.value.trim().toLowerCase();
 
-      if (options.ips) {
-        const ipRegex = /\b(?:\d{1,3}\.){3}\d{1,3}\b/g;
-        results.ips = text.match(ipRegex) || [];
-      }
+        // 1. Separate by blank lines (assuming a blank line separates "email snippets" for association)
+        const snippets = text.split(/\n\s*\n/g).filter(s => s.trim());
+        let results = [];
+        let totalCount = 0;
 
-      if (options.servers) {
-        // Updated server pattern to include s_cmhX_XXXX, sr_cmhX_XXXX, sl_cmhX_XXXX
-        const serverRegex = /\b(?:s|sr|sl)_cmh\d+_\d+\b/gi;
-        results.servers = text.match(serverRegex) || [];
-      }
+        snippets.forEach(snippet => {
+            const lines = snippet.trim().split('\n').map(l => l.trim()).filter(l => l);
 
-      if (options.domains) {
-        const domainRegex = /\b(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}\b/g;
-        results.domains = text.match(domainRegex) || [];
-      }
+            // Determine the "Context" (Sender/Subject) for association
+            let context = '';
+            if (shouldAssociate) {
+                // Assuming Sender is first line, Subject is second
+                const sender = lines[0] || 'Unknown Sender';
+                const subject = lines.length > 1 ? lines[1] : 'Unknown Subject';
+                context = `[Sender/Subject: ${sender} / ${subject}]`;
 
-      displayExtractionResults(results);
+                if (filterKeyword && !context.toLowerCase().includes(filterKeyword)) {
+                    return; // Skip this snippet if it doesn't match the filter
+                }
+            }
+
+            // Extract IPs
+            if (shouldExtractIPs) {
+                const ipRegex = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g;
+                let match;
+                while ((match = ipRegex.exec(snippet)) !== null) {
+                    if (match[0] !== '0.0.0.0' && match[0] !== '127.0.0.1') {
+                         results.push(`IP: ${match[0]} ${context}`);
+                         totalCount++;
+                    }
+                }
+            }
+
+            // Extract Servers (simple hostnames/FQDNs)
+            if (shouldExtractServers) {
+                // Matches hostnames like mail.example.com or mx1.sub.domain.com
+                const serverRegex = /\b[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*\.[a-z]{2,}\b/gi;
+                let match;
+                const extractedServers = new Set();
+                while ((match = serverRegex.exec(snippet)) !== null) {
+                    const server = match[0].toLowerCase();
+                    if (!server.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)) { // Exclude IPs
+                        if (!extractedServers.has(server)) {
+                           extractedServers.add(server);
+                           results.push(`Server: ${server} ${context}`);
+                           totalCount++;
+                        }
+                    }
+                }
+            }
+
+            // Extract Domains (Top-level domains and second-level)
+            if (shouldExtractDomains) {
+                // Matches domains in URL or email formats (e.g., example.com, sub.example.co.uk)
+                const domainRegex = /@([a-z0-9\-\.]+\.[a-z]{2,})|https?:\/\/(?:www\.)?([a-z0-9\-\.]+\.[a-z]{2,})/gi;
+                let match;
+                const extractedDomains = new Set();
+                while ((match = domainRegex.exec(snippet)) !== null) {
+                    const domain = (match[1] || match[2]).toLowerCase();
+                    if (domain && !extractedDomains.has(domain)) {
+                        extractedDomains.add(domain);
+                        results.push(`Domain: ${domain} ${context}`);
+                        totalCount++;
+                    }
+                }
+            }
+        });
+
+        const uniqueResults = [...new Set(results)].join('\n');
+
+        extractionOutputText.textContent = uniqueResults || 'No items extracted based on current options/filter.';
+        resultsInfo.textContent = `Found ${totalCount} total items. Displaying ${new Set(results).size} unique results.`;
     }
 
-    function displayExtractionResults(results) {
-      let output = '';
-      let totalItems = 0;
-
-      if (results.ips.length > 0) {
-        const uniqueIPs = [...new Set(results.ips)];
-        output += 'IP Addresses:\n' + uniqueIPs.join('\n') + '\n\n';
-        totalItems += uniqueIPs.length;
-      }
-
-      if (results.servers.length > 0) {
-        const uniqueServers = [...new Set(results.servers)];
-        output += 'Server Names:\n' + uniqueServers.join('\n') + '\n\n';
-        totalItems += uniqueServers.length;
-      }
-
-      if (results.domains.length > 0) {
-        const uniqueDomains = [...new Set(results.domains)];
-        output += 'Domains:\n' + uniqueDomains.join('\n') + '\n\n';
-        totalItems += uniqueDomains.length;
-      }
-
-      if (output === '') {
-        extractionOutputText.textContent = 'No items found matching your criteria.';
-        resultsInfo.textContent = 'No items extracted.';
-      } else {
-        extractionOutputText.textContent = output.trim();
-        resultsInfo.textContent = `Extracted ${totalItems} unique item(s).`;
-      }
-    }
-
-    // Event listeners for extraction
+    // Extraction Event Handlers (Live update)
     inputText.addEventListener('input', performExtraction);
+    associateIPsCheckbox.addEventListener('change', () => {
+        associationFilterContainer.style.display = associateIPsCheckbox.checked ? 'block' : 'none';
+        performExtraction();
+    });
+    associationFilterInput.addEventListener('input', performExtraction);
     extractIPs.addEventListener('change', performExtraction);
     extractServers.addEventListener('change', performExtraction);
     extractDomains.addEventListener('change', performExtraction);
 
     copyExtractionBtn.addEventListener('click', () => {
-      const text = extractionOutputText.textContent;
-      if (text && text !== 'No items found matching your criteria.') {
-        navigator.clipboard.writeText(text).then(() => {
-          const originalText = copyExtractionBtn.textContent;
-          copyExtractionBtn.textContent = 'Copied!';
-          setTimeout(() => {
-            copyExtractionBtn.textContent = originalText;
-          }, 2000);
-        });
-      }
+        const text = extractionOutputText.textContent;
+        if (text && !text.startsWith('No items')) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = copyExtractionBtn.textContent;
+                copyExtractionBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyExtractionBtn.textContent = originalText;
+                }, 2000);
+            });
+        }
     });
 
     clearExtractionBtn.addEventListener('click', () => {
-      inputText.value = '';
-      extractionOutputText.textContent = '';
-      resultsInfo.textContent = 'Text cleared. No results to display.';
+        inputText.value = '';
+        associationFilterInput.value = '';
+        performExtraction();
+    });
+
+V
+    // --------------------------------------------------------------------------------
+    // History & Dark Mode Logic
+    // --------------------------------------------------------------------------------
+
+    function addToHistory(title, content, category) {
+        const timestamp = new Date().toLocaleString();
+        history.unshift({ title, content, category, timestamp });
+        if (history.length > 50) { // Keep history manageable
+            history.pop();
+        }
+        localStorage.setItem('emailSuiteHistory', JSON.stringify(history));
+        renderHistory();
+    }
+
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+
+        // Deactivate all tabs and hide all content
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => {
+          c.classList.remove('active');
+          c.classList.remove('show');
+        });
+
+        // Activate the clicked tab and show content with animation
+        tab.classList.add('active');
+        const activeContent = document.getElementById(tabId);
+        if (activeContent) {
+          activeContent.classList.add('active');
+          // Use setTimeout for the transition effect
+          setTimeout(() => activeContent.classList.add('show'), 10);
+        }
+      });
+    });
+
+
+    function renderHistory(filter = 'all') {
+        historyItemsContainer.innerHTML = '';
+        const filteredHistory = history.filter(item => filter === 'all' || item.category === filter);
+
+        if (filteredHistory.length === 0) {
+            historyItemsContainer.innerHTML = `<div class="no-history">No history items found for '${filter}'.</div>`;
+            return;
+        }
+
+        filteredHistory.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'history-item';
+            div.setAttribute('data-category', item.category);
+            div.title = item.title;
+            div.innerHTML = `
+                <div class="history-title">${item.title}</div>
+                <div class="history-content">${item.content.substring(0, 150)}${item.content.length > 150 ? '...' : ''}</div>
+                <div class="history-timestamp">${item.timestamp}</div>
+            `;
+
+            // Add a click listener to populate the relevant input box
+            div.addEventListener('click', () => {
+                if (item.category === 'cleaned') {
+                    input.value = item.content;
+                    historyPanel.classList.remove('active');
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active', 'show'));
+                    document.getElementById('email-cleaner').classList.add('active', 'show');
+                    document.querySelector('[data-tab="email-cleaner"]').classList.add('active');
+                    processInput();
+                } else if (item.category === 'htmlInsert') {
+                    insertTextarea.value = item.content;
+                } else if (item.category === 'subject') {
+                    customSubjectInput.value = item.content;
+                }
+            });
+
+            historyItemsContainer.appendChild(div);
+        });
+    }
+
+    historyCategories.forEach(cat => {
+        cat.addEventListener('click', () => {
+            historyCategories.forEach(c => c.classList.remove('active'));
+            cat.classList.add('active');
+            renderHistory(cat.getAttribute('data-category'));
+        });
+    });
+
+    historyToggle.addEventListener('click', () => {
+        historyPanel.classList.add('active');
+        renderHistory();
+    });
+
+    closeHistoryBtn.addEventListener('click', () => {
+        historyPanel.classList.remove('active');
+    });
+
+    clearHistoryBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear ALL history? This cannot be undone.')) {
+            history = [];
+            localStorage.removeItem('emailSuiteHistory');
+            renderHistory();
+        }
+    });
+
+    // Dark Mode Toggle Logic
+    const currentMode = localStorage.getItem('darkMode') === 'true';
+    if (currentMode) {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.classList.add('active');
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      darkModeToggle.classList.toggle('active');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode);
     });
 
     // Add loading animation to buttons
     document.querySelectorAll('.btn').forEach(btn => {
-      if (!btn.id.includes('history') && !btn.id.includes('closeHistory')) {
-        btn.addEventListener('click', function() {
-          this.classList.add('loading');
-          setTimeout(() => {
-            this.classList.remove('loading');
-          }, 800);
-        });
-      }
+        if (!btn.id.includes('history') && !btn.id.includes('closeHistory')) {
+            btn.addEventListener('click', function() {
+                this.classList.add('loading');
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 800);
+            });
+        }
     });
 
     // Initialize the app
     window.addEventListener('load', () => {
-      buildHeaderCheckboxes();
-      performExtraction();
+        // Initial build based on the default input or cleared state
+        buildHeaderCheckboxes();
+        // Since input is not empty by default for extraction, run it on load
+        performExtraction();
     });
   </script>
 </body>

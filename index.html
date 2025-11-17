@@ -1250,7 +1250,11 @@ To: recipient@example.com
             <div class="output-section">
               <h3>Cleaned STR:</h3>
               <textarea id="output" placeholder="Result will appear here..."></textarea>
-            </div>
+              
+              <div class="buttons" style="margin-top: 12px; justify-content: flex-start;">
+                <button class="btn copy-btn" id="copyOutputBtn">📋 Copy Cleaned STR</button>
+              </div>
+              </div>
 
             <div class="insert-section">
               <div class="options">
@@ -1436,6 +1440,8 @@ Here is another IP: 192.168.1.1</textarea>
     const inputArea = document.getElementById('input');
     const outputArea = document.getElementById('output');
     const headersBox = document.getElementById('headersBox');
+    
+    const copyOutputBtn = document.getElementById('copyOutputBtn'); // <-- ADDED
 
     // Transformation buttons
     const toggleRdns = document.getElementById('toggleRdns');
@@ -1817,6 +1823,33 @@ Here is another IP: 192.168.1.1</textarea>
       a.click();
       URL.revokeObjectURL(url);
     });
+
+    // START: New Code to Add
+    // Copy Cleaned STR functionality
+    copyOutputBtn.addEventListener('click', () => {
+      const textToCopy = outputArea.value;
+
+      if (!textToCopy.trim()) {
+        alert("Nothing to copy!");
+        return;
+      }
+
+      // Use the modern clipboard API
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        // Provide user feedback
+        const originalText = copyOutputBtn.innerHTML;
+        copyOutputBtn.innerHTML = '✅ Copied!';
+        
+        // Revert the button text after 2 seconds
+        setTimeout(() => {
+          copyOutputBtn.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        alert('Failed to copy. Please try again.');
+      });
+    });
+    // END: New Code to Add
 
     // Encoder/Decoder Functionality
     const encodeInput = document.getElementById('encodeInput');

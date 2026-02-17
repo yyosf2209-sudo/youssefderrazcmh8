@@ -1094,7 +1094,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <div id="stars-container">
     <div id="stars1" class="stars"></div>
     <div id="stars2" class="stars"></div>
@@ -1103,6 +1102,25 @@
 
   <div class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode"></div>
 
+  <button class="history-toggle btn history-btn" id="historyToggle">
+    <span>📜 History</span>
+  </button>
+
+  <div class="history-panel" id="historyPanel">
+    <div class="history-header">
+      <h2>Activity History</h2>
+      <button class="close-history btn danger-btn" id="closeHistory">Close</button>
+    </div>
+    <div class="history-categories" id="historyCategories">
+      <div class="history-category active" data-category="all">All Activities</div>
+      <div class="history-category" data-category="cleaned">Cleaned Content</div>
+      <div class="history-category" data-category="htmlInsert">HTML Inserted</div>
+      <div class="history-category" data-category="export">Exported Files</div>
+      <div class="history-category" data-category="subject">Subject Changes</div>
+    </div>
+    <div class="history-items-container" id="historyItems"></div>
+    <div class="clear-history" id="clearHistory">Clear All History</div>
+  </div>
 
   <div class="main-container">
     <div class="content-wrapper">
@@ -1280,10 +1298,10 @@ To: recipient@example.com
           <div class="col">
             <h3>About Encoding Types</h3>
             <div class="headers-box">
-              <p style="color:black;">Base64 Encoding: Converts binary data into ASCII characters. Commonly used for email attachments and data URLs.</p>
-              <p style="color:black;">URL Encoding: Replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.</p>
-              <p style="color:black;">Hex Encoding: Represents data with hexadecimal values (0-9, A-F).</p>
-              <p style="color:black;">Quoted-Printable: Encodes 8-bit characters into 7-bit ASCII. Used for MIME email messages.</p>
+              <p><strong>Base64 Encoding:</strong> Converts binary data into ASCII characters. Commonly used for email attachments and data URLs.</p>
+              <p><strong>URL Encoding:</strong> Replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.</p>
+              <p><strong>Hex Encoding:</strong> Represents data with hexadecimal values (0-9, A-F).</p>
+              <p><strong>Quoted-Printable:</strong> Encodes 8-bit characters into 7-bit ASCII. Used for MIME email messages.</p>
             </div>
             
             <h3>Quick Actions</h3>
@@ -1307,10 +1325,10 @@ Another Subject Line
 Here is another IP: 192.168.1.1</textarea>
             
             <div class="extraction-options">
-                <div class="option"> <input type="checkbox" id="associateIPs"> <label for="associateIPs"style="color:black;">Associate IPs with Sender/Subject</label> </div>
-                <div class="option"> <input type="checkbox" id="extractIPs" checked> <label for="extractIPs"style="color:black;">Extract IP Addresses (Simple)</label> </div>
-                <div class="option"> <input type="checkbox" id="extractServers" checked> <label for="extractServers"style="color:black;">Extract Server Names (Simple)</label> </div>
-                <div class="option"> <input type="checkbox" id="extractDomains" checked> <label for="extractDomains" style="color:black;">Extract Domains (Simple)</label> </div>
+                <div class="option"> <input type="checkbox" id="associateIPs"> <label for="associateIPs">Associate IPs with Sender/Subject</label> </div>
+                <div class="option"> <input type="checkbox" id="extractIPs" checked> <label for="extractIPs">Extract IP Addresses (Simple)</label> </div>
+                <div class="option"> <input type="checkbox" id="extractServers" checked> <label for="extractServers">Extract Server Names (Simple)</label> </div>
+                <div class="option"> <input type="checkbox" id="extractDomains" checked> <label for="extractDomains">Extract Domains (Simple)</label> </div>
             </div>
 
             <div id="associationFilterContainer" style="display: none; margin-top: 15px;">

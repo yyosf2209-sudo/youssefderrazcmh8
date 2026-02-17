@@ -6,21 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --brand: #6366f1; --brand-darker: #4f46e5; --brand-glow: rgba(99, 102, 241, 0.3);
+      --brand: #6366f1;
+      --brand-darker: #4f46e5; --brand-glow: rgba(99, 102, 241, 0.3);
       --ok: #10b981; --ok-darker: #059669; --ok-glow: rgba(16, 185, 129, 0.3);
-      --warn: #f59e0b; --warn-darker: #d97706; --warn-glow: rgba(245, 158, 11, 0.3);
+      --warn: #f59e0b; --warn-darker: #d97706;
+      --warn-glow: rgba(245, 158, 11, 0.3);
       --info: #06b6d4; --info-darker: #0891b2; --info-glow: rgba(6, 182, 212, 0.3);
-      --danger: #ef4444; --danger-darker: #dc2626; --danger-glow: rgba(239, 68, 68, 0.3);
+      --danger: #ef4444; --danger-darker: #dc2626;
+      --danger-glow: rgba(239, 68, 68, 0.3);
       --primary: #3b82f6; --primary-darker: #2563eb; --primary-glow: rgba(59, 130, 246, 0.3);
-      --history: #8b5cf6; --history-darker: #7c3aed; --history-glow: rgba(139, 92, 246, 0.3);
+      --history: #8b5cf6; --history-darker: #7c3aed;
+      --history-glow: rgba(139, 92, 246, 0.3);
       
       --bg1: #f8fafc; --bg2: #f1f5f9; --text: #1e293b; --muted: #64748b; --border: #e2e8f0;
-      --panel: #ffffff; --shadow: rgba(0, 0, 0, 0.08); --shadow-hover: rgba(0, 0, 0, 0.12);
+      --panel: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.08); --shadow-hover: rgba(0, 0, 0, 0.12);
       
       --dark-bg1: #0f172a; --dark-bg2: #1e293b; --dark-text: #f1f5f9; --dark-muted: #94a3b8;
       --dark-border: rgba(255, 255, 255, 0.1); --dark-shadow: rgba(0, 0, 0, 0.3);
       --dark-panel-bg: rgba(30, 41, 59, 0.7); --dark-component-bg: rgba(15, 23, 42, 0.5);
-      
       --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-xl: 18px;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,7 +80,7 @@
 
     #stars1 { 
       background-size: 200px 200px; 
-      animation-duration: 120s; 
+      animation-duration: 120s;
       background-image: 
         radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)), 
         radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)), 
@@ -85,7 +89,7 @@
 
     #stars2 { 
       background-size: 300px 300px; 
-      animation-duration: 100s; 
+      animation-duration: 100s;
       background-image: 
         radial-gradient(1px 1px at 150px 120px, #ddd, rgba(0,0,0,0)),
         radial-gradient(1px 1px at 10px 90px, #eee, rgba(0,0,0,0));
@@ -93,7 +97,7 @@
 
     #stars3 { 
       background-size: 400px 400px; 
-      animation-duration: 80s; 
+      animation-duration: 80s;
       background-image: 
         radial-gradient(1px 1px at 180px 140px, #ddd, rgba(0,0,0,0));
     }
@@ -1090,6 +1094,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <a href="https://multiple-mtm9.vercel.app/"><button class="tab active" style="color:black;font:bold;" data-tab="multiple-email-cleaner">📧 Email Cleaner</button></a>
   <div id="stars-container">
     <div id="stars1" class="stars"></div>
     <div id="stars2" class="stars"></div>
@@ -1098,9 +1103,25 @@
 
   <div class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode"></div>
 
-<H1>
-  <a href="https://multiple-mtm9.vercel.app/">multiple headers cleaner</a>
-  </H1>
+  <button class="history-toggle btn history-btn" id="historyToggle">
+    <span>📜 History</span>
+  </button>
+
+  <div class="history-panel" id="historyPanel">
+    <div class="history-header">
+      <h2>Activity History</h2>
+      <button class="close-history btn danger-btn" id="closeHistory">Close</button>
+    </div>
+    <div class="history-categories" id="historyCategories">
+      <div class="history-category active" data-category="all">All Activities</div>
+      <div class="history-category" data-category="cleaned">Cleaned Content</div>
+      <div class="history-category" data-category="htmlInsert">HTML Inserted</div>
+      <div class="history-category" data-category="export">Exported Files</div>
+      <div class="history-category" data-category="subject">Subject Changes</div>
+    </div>
+    <div class="history-items-container" id="historyItems"></div>
+    <div class="clear-history" id="clearHistory">Clear All History</div>
+  </div>
 
   <div class="main-container">
     <div class="content-wrapper">
@@ -1127,14 +1148,14 @@ To: recipient@example.com
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Test Email&lt;/title&gt;
+&lt;title&gt;Test Email&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;p&gt;This is a test email content.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</textarea>
 
-            <input id="fileInput" type="file" accept=".txt,.eml,text/*" style="display:none"/>
+            <input id="fileInput" type="file" accept=".txt,.eml,text/*" multiple style="display:none"/>
             <div class="buttons">
               <button class="btn import-btn" id="importBtn">📁 Import</button>
               <button class="btn clean-btn" id="cleanBtn">✨ Clean</button>
@@ -1234,7 +1255,6 @@ To: recipient@example.com
             <div class="output-section">
               <h3>Cleaned STR:</h3>
               <textarea id="output" placeholder="Result will appear here..."></textarea>
-              
               <div class="buttons" style="margin-top: 12px; justify-content: flex-start;">
                 <button class="btn copy-btn" id="copyOutputBtn">📋 Copy Cleaned STR</button>
               </div>
@@ -1262,7 +1282,6 @@ To: recipient@example.com
             <div class="encoding-options">
               <label><input type="radio" name="encodingType" value="base64" checked> Base64</label>
               <label><input type="radio" name="encodingType" value="url"> URL Encoding</label>
-            
               <label><input type="radio" name="encodingType" value="hex"> Hex</label>
               <label><input type="radio" name="encodingType" value="quoted-printable"> Quoted-Printable</label>
             </div>
@@ -1357,7 +1376,6 @@ Here is another IP: 192.168.1.1</textarea>
     // Tab functionality
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');
-    
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const tabId = tab.getAttribute('data-tab');
@@ -1425,7 +1443,7 @@ Here is another IP: 192.168.1.1</textarea>
     const outputArea = document.getElementById('output');
     const headersBox = document.getElementById('headersBox');
     
-    const copyOutputBtn = document.getElementById('copyOutputBtn'); // <-- ADDED
+    const copyOutputBtn = document.getElementById('copyOutputBtn');
 
     // Transformation buttons
     const toggleRdns = document.getElementById('toggleRdns');
@@ -1464,17 +1482,41 @@ Here is another IP: 192.168.1.1</textarea>
 
     // Import file functionality
     importBtn.addEventListener('click', () => fileInput.click());
+
+    // UPDATED: Multi-file import logic
     fileInput.addEventListener('change', async (evt) => {
-      const file = evt.target.files[0]; 
-      if (!file) return;
+      const files = evt.target.files; 
+      if (!files || files.length === 0) return;
+
+      let combinedText = "";
+      const separator = "\n\n----------------------------------------\n\n";
+
       try {
-        const text = await file.text();
-        inputArea.value = text;
+        // Loop through all selected files
+        for (let i = 0; i < files.length; i++) {
+          const text = await files[i].text();
+          
+          // Append filename header for clarity and content
+          combinedText += `[FILE IMPORT: ${files[i].name}]\n` + text;
+          
+          // Add separator if it's not the last file
+          if (i < files.length - 1) {
+            combinedText += separator;
+          }
+        }
+
+        // Set the result to the input area
+        inputArea.value = combinedText;
+        
+        // Reset file input
         fileInput.value = '';
+        
+        // Trigger existing logic to parse headers and reset transformations
         buildHeaderCheckboxes();
         resetTransformations();
+        
       } catch (error) {
-        alert('Error reading file: ' + error.message);
+        alert('Error reading files: ' + error.message);
       }
     });
 
@@ -1530,7 +1572,6 @@ Here is another IP: 192.168.1.1</textarea>
       // Separate fixed params from optional params
       const fixedParams = [];
       const optionalParams = [];
-      
       unique.forEach(h => {
         if (FIXED_SELECTED_PARAMS.includes(h)) {
           fixedParams.push(h);
@@ -1808,7 +1849,6 @@ Here is another IP: 192.168.1.1</textarea>
       URL.revokeObjectURL(url);
     });
 
-    // START: New Code to Add
     // Copy Cleaned STR functionality
     copyOutputBtn.addEventListener('click', () => {
       const textToCopy = outputArea.value;
@@ -1833,7 +1873,6 @@ Here is another IP: 192.168.1.1</textarea>
         alert('Failed to copy. Please try again.');
       });
     });
-    // END: New Code to Add
 
     // Encoder/Decoder Functionality
     const encodeInput = document.getElementById('encodeInput');
@@ -2065,6 +2104,7 @@ Here is another IP: 192.168.1.1</textarea>
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = copyExtractionBtn.textContent;
                 copyExtractionBtn.textContent = 'Copied!';
+                
                 setTimeout(() => {
                     copyExtractionBtn.textContent = originalText;
                 }, 2000);

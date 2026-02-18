@@ -1092,6 +1092,8 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- JSZip library for zip export functionality -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
   <div id="stars-container">
@@ -1830,7 +1832,7 @@ Here is another IP: 192.168.1.1</textarea>
       });
     });
 
-    // Export functionality
+    // ================== UPDATED EXPORT FUNCTIONALITY ==================
     exportBtn.addEventListener('click', () => {
       const text = outputArea.value;
       if (!text.trim()) {
@@ -1838,15 +1840,223 @@ Here is another IP: 192.168.1.1</textarea>
         return;
       }
       
-      const filename = document.getElementById('exportFilename').value || 'cleaned_header.txt';
-      const blob = new Blob([text], { type: 'text/plain' });
+      // Get the base filename from the input field
+      const baseFilename = document.getElementById('exportFilename').value.replace('.txt', '') || 'cleaned_header';
+      
+      // Ask if user wants separate files or one combined file
+      const exportChoice = confirm("Found multiple sections. Export as:\n\n• OK = Separate numbered files\n• Cancel = Single combined file");
+      
+      if (exportChoice) {
+        // Export as separate numbered files
+        exportSeparateFiles(text, baseFilename);
+      } else {
+        // Export as single combined file
+        exportSingleFile(text, baseFilename);
+      }
+    });
+
+    function exportSeparateFiles(text, baseFilename) {
+      // Split content by separator patterns (looking for import separators or blank lines)
+      const separators = [
+        /\[FILE IMPORT:.*?\]\n/,  // File import headers
+        /\n-{5,}\n/,              // 5+ dashes on a line
+        /\n\*{5,}\n/,             // 5+ asterisks on a line
+        /\n_{5,}\n/               // 5+ underscores on a line
+      ];
+      
+      let sections = [text];
+      
+      // Try each separator pattern
+      for (const separator of separators) {
+        if (separator.test(sections[0])) {
+          sections = sections[0].split(separator);
+          break;
+        }
+      }
+      
+      // Also try splitting by double newline if no other separator found
+      if (sections.length === 1 && sections[0].includes('\n\n')) {
+        sections = sections[0].split(/\n\n+/);
+      }
+      
+      // Clean up sections (remove empty ones, trim whitespace)
+      const cleanSections = sections
+        .map(section => {
+          // Remove file import headers if present
+          section = section.replace(/^\[FILE IMPORT:.*?\]\n/, '');
+          return section.trim();
+        })
+        .filter(section => section.length > 10); // Filter out very short sections
+      
+      if (cleanSections.length <= 1) {
+        alert("No separate sections found. Exporting as single file instead.");
+        exportSingleFile(text, baseFilename);
+        return;
+      }
+      
+      // Ask about empty lines
+      const addEmptyLines = confirm(`Found ${cleanSections.length} sections. Add 5 empty lines between headers?`);
+      
+      // Create ZIP archive
+      createZipArchive(cleanSections, baseFilename, addEmptyLines);
+    }
+
+    function exportSingleFile(text, baseFilename) {
+      // Ask about empty lines
+      const addEmptyLines = confirm("Add 5 empty lines between header sections in the single file?");
+      
+      let processedText = text;
+      
+      if (addEmptyLines) {
+        processedText = addEmptyLinesBetweenHeaders(processedText);
+      }
+      
+      processedText = cleanExtraFormatting(processedText);
+      
+      // Create and download single file
+      const blob = new Blob([processedText], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = filename.endsWith('.txt') ? filename : filename + '.txt';
+      a.download = `${baseFilename}.txt`;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
-    });
+      
+      alert(`Exported: ${baseFilename}.txt`);
+    }
+
+    function addEmptyLinesBetweenHeaders(content) {
+      const lines = content.split('\n');
+      const result = [];
+      let inHeaderSection = false;
+      
+      lines.forEach((line, index) => {
+        result.push(line);
+        
+        // Check if this is a header line (contains colon but not HTML)
+        if (line.includes(':') && !line.includes('<') && !line.includes('>')) {
+          inHeaderSection = true;
+          
+          // Check if next line exists and doesn't look like continuation or new header
+          if (index < lines.length - 1) {
+            const nextLine = lines[index + 1];
+            const isContinuation = /^\s/.test(nextLine);
+            const isNewHeader = /^[A-Z][a-zA-Z\-]+:/.test(nextLine);
+            const isHTML = nextLine.includes('<') || nextLine.includes('>');
+            
+            if (!isContinuation && !isNewHeader && !isHTML) {
+              // We're transitioning from headers to body, add empty lines
+              result.push('', '', '', '', '');
+              inHeaderSection = false;
+            }
+          }
+        }
+      });
+      
+      return result.join('\n');
+    }
+
+    function cleanExtraFormatting(content) {
+      // Remove excessive empty lines but keep structure
+      let cleaned = content
+        .replace(/\r\n/g, '\n') // Normalize line endings
+        .replace(/\n{4,}/g, '\n\n\n') // Max 3 consecutive empty lines
+        .replace(/[ \t]+$/gm, '') // Remove trailing spaces
+        .replace(/\t+/g, '    ') // Convert tabs to spaces
+        .replace(/^\s+|\s+$/g, ''); // Trim entire content
+      
+      // Ensure there's a blank line before HTML content if not present
+      if (cleaned.includes('<!DOCTYPE') || cleaned.includes('<html')) {
+        if (!cleaned.match(/\n\n\s*<!/) && !cleaned.match(/\n\n\s*<html/)) {
+          cleaned = cleaned.replace(/(\n)(\s*<!(DOCTYPE|html))/i, '$1\n$2');
+        }
+      }
+      
+      return cleaned;
+    }
+
+    function createZipArchive(sections, baseFilename, addEmptyLines) {
+      // Check if JSZip is available
+      if (window.JSZip) {
+        const zip = new JSZip();
+        
+        sections.forEach((section, index) => {
+          let processedSection = section;
+          
+          if (addEmptyLines) {
+            processedSection = addEmptyLinesBetweenHeaders(processedSection);
+          }
+          
+          processedSection = cleanExtraFormatting(processedSection);
+          
+          const fileNumber = String(index + 1).padStart(3, '0');
+          const filename = `${baseFilename}_${fileNumber}.txt`;
+          zip.file(filename, processedSection);
+        });
+        
+        zip.generateAsync({ type: "blob" })
+          .then(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${baseFilename}_pack.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert(`Successfully exported ${sections.length} files in ${baseFilename}_pack.zip`);
+          })
+          .catch(function(error) {
+            alert("Error creating zip file: " + error.message);
+            // Fallback to individual file downloads
+            downloadFilesIndividually(sections, baseFilename, addEmptyLines);
+          });
+      } else {
+        // JSZip not loaded, download files individually
+        alert("JSZip library not loaded. Downloading files individually instead.");
+        downloadFilesIndividually(sections, baseFilename, addEmptyLines);
+      }
+    }
+
+    function downloadFilesIndividually(sections, baseFilename, addEmptyLines) {
+      let downloadCount = 0;
+      
+      sections.forEach((section, index) => {
+        let processedSection = section;
+        
+        if (addEmptyLines) {
+          processedSection = addEmptyLinesBetweenHeaders(processedSection);
+        }
+        
+        processedSection = cleanExtraFormatting(processedSection);
+        
+        const fileNumber = String(index + 1).padStart(3, '0');
+        const filename = `${baseFilename}_${fileNumber}.txt`;
+        
+        // Create and download individual file
+        const blob = new Blob([processedSection], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        downloadCount++;
+        
+        // If this is the last file, show alert
+        if (downloadCount === sections.length) {
+          setTimeout(() => {
+            alert(`Downloaded ${downloadCount} individual files.`);
+          }, 500);
+        }
+      });
+    }
 
     // Copy Cleaned STR functionality
     copyOutputBtn.addEventListener('click', () => {
